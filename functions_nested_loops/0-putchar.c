@@ -1,3 +1,6 @@
+//#include <stdio.h>
+#include "main.h"
+
 /**
  * main - printout the string _putchar
  *
@@ -8,11 +11,13 @@ int main(void)
 	const char p_str[]="_putchar\n";
 	int pstr_size = sizeof(p_str);
 	int i;
+	char c;
 	
 	for (i = 0 ; i < pstr_size ; ++i)
 	{
-		putchar
-	printf("_putchar\n");
+		c = p_str[i];
+		_putchar(c);
+	}
 
 	return (0);
 }
