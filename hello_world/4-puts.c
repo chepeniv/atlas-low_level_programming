@@ -3,7 +3,7 @@
 /**
  * main - prints out a predefined string to stdout
  *
- * return: returns 0 upon successful execution
+ * Return: returns 0 upon successful execution
  */
 int main(void)
 {
