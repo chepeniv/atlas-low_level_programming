@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - printout all the base 16 digits 
+ * main - printout all the base 16 digits
  *
  * Return: returns 0 upon successful execution
  */
@@ -13,7 +13,7 @@ int main(void)
 	{
 		putchar(i);
 	}
-	for (i = 97; i <= 97+5; ++i)
+	for (i = 97; i <= 97 + 5; ++i)
 	{
 		putchar(i);
 	}
