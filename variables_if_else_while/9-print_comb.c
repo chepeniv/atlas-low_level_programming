@@ -1,7 +1,10 @@
 #include <stdio.h>
 
 /**
- * main - printout all possible combinations of single-digit numbers 
+ * main - printout all possible combinations of single-digit numbers
+ *
+ * Description: why in the world was the description for this task so 
+ * weirdly worded ???
  *
  * Return: returns 0 upon successful execution
  */
