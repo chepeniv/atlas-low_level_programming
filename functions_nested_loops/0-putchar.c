@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	const char p_str[]="_putchar\n";
+	const char p_str[]="_putchar";
 	int pstr_size = sizeof(p_str);
 	int i;
 	char c;
