@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 /**
- * simply prints out a string to output
+ * main - prints out a predefined string to stdout
+ *
+ * return: returns 0 upon successful execution
  */
 int main(void)
 {
