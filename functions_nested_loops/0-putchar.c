@@ -12,7 +12,7 @@ int main(void)
 	int i;
 	char c;
 	
-	for (i = 0 ; i <= pstr_size ; ++i)
+	for (i = 0 ; i < pstr_size ; ++i)
 	{
 		c = p_str[i];
 		_putchar(c);
