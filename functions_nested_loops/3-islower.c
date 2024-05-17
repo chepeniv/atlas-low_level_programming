@@ -2,6 +2,7 @@
 
 /**
  * _islower - determines whether a given char is lowercase
+ * @c: a char or int to be interpreted as ascii code and evaluated
  *
  * Return: returns 1 for lowercase, 0 otherwise
  */
