@@ -11,7 +11,7 @@ int main(void)
 
 	for (i = 97; i <= 122; i++)
 	{
-		if (i != 'e' && i != 'q' )
+		if (i != 'e' && i != 'q')
 		{
 			putchar(i);
 		}
