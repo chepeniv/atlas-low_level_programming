@@ -8,9 +8,8 @@
  */
 int print_last_digit(int n)
 {
-	unsigned int u = (unsigned int) n;
-	int l = (u % 10) + 48;
-	char c = (char) l;
+	int l = n % 10;
+	char c = l + '0';
 	_putchar(c);
 	return (n);
 }
