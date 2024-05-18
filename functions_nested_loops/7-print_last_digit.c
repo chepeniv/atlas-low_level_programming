@@ -1,5 +1,4 @@
 #include "main.h"
-//#include <stdio.h>
 
 /**
  * print_last_digit - evaluates what the final digit of a given integer is
