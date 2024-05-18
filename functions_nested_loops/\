@@ -1,0 +1,22 @@
+//#include "main.h"
+#include <stdio.h>
+
+/**
+ * jack_bauer - printout every minute from 00:00 to 23:59
+ * @n: the int to be evaluated
+ *
+ * Return: int value of final digit
+ */
+void jack_bauer(void)
+{
+	int hr;
+	int min;
+	for (hr = 0; hr <= 23; ++hr)
+	{
+		for (min = 0; min <= 59; ++min)
+		{
+			printf("%2d:%2d\n", hr, min);
+		}
+		min = 0; 
+	}
+}
