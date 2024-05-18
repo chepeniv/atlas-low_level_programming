@@ -16,7 +16,6 @@ void jack_bauer(void)
 	{
 		for (min = 0; min <= 59; ++min)
 		{
-		//	printf("%2d:%2d -- ", hr, min);
 			print_num(hr);
 			_putchar(58);
 			print_num(min);
