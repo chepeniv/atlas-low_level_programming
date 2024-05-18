@@ -4,7 +4,6 @@ void print_num(int);
 
 /**
  * jack_bauer - printout every minute from 00:00 to 23:59
- * @n: the int to be evaluated
  *
  * Return: int value of final digit
  */
