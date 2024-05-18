@@ -12,6 +12,7 @@ void jack_bauer(void)
 {
 	int hr;
 	int min;
+
 	for (hr = 0; hr <= 23; ++hr)
 	{
 		for (min = 0; min <= 59; ++min)
@@ -21,7 +22,7 @@ void jack_bauer(void)
 			print_num(min);
 			_putchar(10);
 		}
-		min = 0; 
+		min = 0;
 	}
 }
 
@@ -34,10 +35,11 @@ void jack_bauer(void)
  */
 void print_num(int n)
 {
-	int f = n / 10; 
-	int l = n % 10; 
+	int f = n / 10;
+	int l = n % 10;
 	char cf = f + '0';
 	char cl = l + '0';
+
 	_putchar(cf);
 	_putchar(cl);
 }
