@@ -68,6 +68,20 @@ int _exp(int base, int exp)
 	return (pwr);
 }
 
+int rev_int(int n)
+{
+	int modulo; 
+	int place = 0; 
+	int rsum = 0; 
+
+	while (n > 0)
+	{
+		modulo = n % 10;
+		place++
+		rsum = rsum + (modulo * _exp(10, place);
+	}
+}
+
 /*void print_rev(int m)
  *{
  *	while (m != 0) 
