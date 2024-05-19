@@ -17,6 +17,6 @@ int main(void)
 		c = p_str[i];
 		_putchar(c);
 	}
-`
+
 	return (0);
 }
