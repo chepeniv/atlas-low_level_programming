@@ -24,7 +24,8 @@ int main(void)
     printf("--%d\n", 34477);
     //r = print_last_digit(-1024);
     //_putchar('0' + r);
-*/
     	jack_bauer();
+*/
+    	times_table();
 	return (0);
 }
