@@ -17,6 +17,7 @@ int main(void)
 		c = p_str[i];
 		_putchar(c);
 	}
+	_putchar(10);
 
 	return (0);
 }
