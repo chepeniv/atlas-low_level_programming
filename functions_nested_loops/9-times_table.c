@@ -19,7 +19,7 @@ void print_num(int n)
 		_putchar(cf);
 		_putchar(cl);
 	}
-	else
+	else 
 	{
 		_putchar(32);
 		_putchar(n + '0');
@@ -43,7 +43,13 @@ void times_table(void)
 		{
 			c = a * b; 
 			
-			if (c < 10 && b < 9)
+			if (b == 0 )
+			{
+				_putchar(c + '0');
+				_putchar(44);
+				_putchar(32);
+			}
+			else if (c < 10 && b < 9)
 			{
 				print_num(c);
 				_putchar(44);
