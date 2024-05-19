@@ -34,6 +34,7 @@ void print_to_98(int n)
 	}
 	print_fwrd(98);
 	_putchar(10);
+	_putchar(10);
 }
 
 void print_fwrd(int m)
