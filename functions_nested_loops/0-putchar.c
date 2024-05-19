@@ -11,12 +11,12 @@ int main(void)
 	int pstr_size = sizeof(p_str);
 	int i;
 	char c;
-	
+
 	for (i = 0 ; i < pstr_size ; ++i)
 	{
 		c = p_str[i];
 		_putchar(c);
 	}
-
+`
 	return (0);
 }
