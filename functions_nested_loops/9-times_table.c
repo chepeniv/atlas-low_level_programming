@@ -14,20 +14,17 @@ void print_num(int n)
 	char cf = f + '0';
 	char cl = l + '0';
 
-	_putchar(cf);
-	_putchar(cl);
-}
-
-/*
-void format_entry(int b)
-{
-	if (b != 9 && c < 10) 
+	if (n > 9)
 	{
-		_putchar(44);
+		_putchar(cf);
+		_putchar(cl);
+	}
+	else
+	{
 		_putchar(32);
+		_putchar(n + '0');
 	}
 }
-*/
 
 /**
  * times_table - printout 9's times table starting from 0
@@ -46,20 +43,22 @@ void times_table(void)
 		{
 			c = a * b; 
 			
-			if (b != 9 && c < 10)
-			{
-				_putchar(c + '0');
-				_putchar(44);
-				_putchar(32);
-				_putchar(32);
-			}
-			else
+			if (c < 10 && b < 9)
 			{
 				print_num(c);
 				_putchar(44);
 				_putchar(32);
 			}
-			
+			else if (b != 9)
+			{
+				print_num(c);
+				_putchar(44);
+				_putchar(32);
+			}
+			else
+			{
+				print_num(c);
+			}
 		}
 
 		_putchar(10);
