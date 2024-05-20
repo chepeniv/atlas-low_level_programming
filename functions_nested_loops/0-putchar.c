@@ -8,17 +8,13 @@
 int main(void)
 {
 	int i;
-	char c;
 	const char p_str[]="_putchar";
-	int pstr_size = sizeof(p_str);
+	int size = sizeof(p_str);
 
-	for (i = 0 ; i < pstr_size ; ++i)
+	for (i = 0 ; i < size ; ++i)
 	{
-		c = p_str[i];
-		_putchar(c);
+		_putchar(p_str[i]);
 	}
-
-	_putchar('\n');
 
 	return (0);
 }
