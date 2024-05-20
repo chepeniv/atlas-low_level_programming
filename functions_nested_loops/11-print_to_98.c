@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdio.h>
-
+/*
 void into_string(char str[32], int n)
 {
         int i = 30;
@@ -32,7 +32,7 @@ void print_string(char str[32])
 		++i;
 	}
 }
-
+*/
 void print_int(int n)
 {
 	if (n < 0)
