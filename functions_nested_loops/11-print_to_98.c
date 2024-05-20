@@ -1,38 +1,5 @@
 #include "main.h"
-#include <stdio.h>
-/*
-void into_string(char str[32], int n)
-{
-        int i = 30;
-	char sign;
 
-	if (n < 0 )
-	{
-		n = -n;
-
-	}
-
-        while (n !=0)
-        {
-		str[i--] = (n % 10) + '0';
-		n /= 10;
-        }
-}
-
-void print_string(char str[32])
-{
-	int i = 1;
-
-	while (i <= 30)
-	{
-		if (str[i] != 'a')
-		{
-			_putchar(str[i]);
-		}
-		++i;
-	}
-}
-*/
 void print_int(int n)
 {
 	if (n < 0)
