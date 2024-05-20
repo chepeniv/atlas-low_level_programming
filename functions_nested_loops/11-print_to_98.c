@@ -74,5 +74,4 @@ void print_to_98(int n)
 	}
 	print_int(98);
 	_putchar(10);
-	_putchar(10);
 }
