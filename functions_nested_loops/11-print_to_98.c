@@ -28,10 +28,20 @@ void print_string(char str[32])
 
 void print_int(int n)
 {
-	char str[32] = { [0 ... 30] 'a'};
+	if (n == 0)
+	{
+		_putchar('0');
+	}
+	else
+	{
+		char str[32];
+		int i;
+		for (i = 0; i <= 30; i++)
+			str[i] = 'a';
 
-	into_string(str, n);
-	print_string(str);
+		into_string(str, n);
+		print_string(str);
+	}
 }
 
 /**
