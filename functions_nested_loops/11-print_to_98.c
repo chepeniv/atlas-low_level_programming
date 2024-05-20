@@ -3,6 +3,8 @@
 
 int _exp(int, int);
 void print_fwrd(int);
+int rev_int(int);
+int reduce_int(int n);
 
 /**
  * print_to_98 - count from any given number towards 98
@@ -12,6 +14,7 @@ void print_fwrd(int);
  */
 void print_to_98(int n)
 {
+	/*
 	int i;
 
 	if (n > 98)
@@ -35,6 +38,20 @@ void print_to_98(int n)
 	print_fwrd(98);
 	_putchar(10);
 	_putchar(10);
+	*/
+
+	printf("original : %d\n", 10);
+	printf("reversed : %d\n", rev_int(10));
+	printf("original : %d\n", 2301);
+	printf("reversed : %d\n", rev_int(2301));
+	printf("original : %d\n", 13);
+	printf("reversed : %d\n", rev_int(13));
+	printf("original : %d\n", 670374);
+	printf("reversed : %d\n", rev_int(670374));
+	printf("original : %d\n", 4704420);
+	printf("reversed : %d\n", rev_int(4704420));
+	printf("original : %d\n", 662);
+	printf("reversed : %d\n", rev_int(662));
 }
 
 void print_fwrd(int m)
@@ -53,7 +70,15 @@ void print_fwrd(int m)
 		_putchar(f + '0');
 
 		m = m - (f * _exp(10, e));
+
 	}
+}
+
+int reduce_int(int n)
+{
+ 	int last = n % 10;
+ 	n = (n - last) / 10;
+	return (n);
 }
 
 int _exp(int base, int exp)
@@ -78,15 +103,19 @@ int rev_int(int n)
 	{
 		modulo = n % 10;
 		place++;
-		if (modulo = 0)
+
+		if (modulo == 0)
 		{
 			rsum = rsum * 10;
 		}
 		else
 		{
-			rsum = rsum + (modulo * _exp(10, place);
+			rsum = rsum + (modulo * _exp(10, place));
 		}
+
+		n = reduce_int(n);
 	}
+	return (rsum);
 }
 
 /*void print_rev(int m)

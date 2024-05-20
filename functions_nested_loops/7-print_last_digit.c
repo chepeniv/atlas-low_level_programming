@@ -27,9 +27,10 @@ int _abs(int n)
  */
 int print_last_digit(int n)
 {
-	int a = _abs(n);
-	int l = a % 10;
-	char c = l + '0';
+
+	int l = n % 10; // get last first then do absolute
+	int a = _abs(l);
+	char c = a + '0';
 	_putchar(c);
 	return (l);
 }
