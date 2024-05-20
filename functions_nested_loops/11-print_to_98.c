@@ -77,8 +77,15 @@ int rev_int(int n)
 	while (n > 0)
 	{
 		modulo = n % 10;
-		place++
-		rsum = rsum + (modulo * _exp(10, place);
+		place++;
+		if (modulo = 0)
+		{
+			rsum = rsum * 10;
+		}
+		else
+		{
+			rsum = rsum + (modulo * _exp(10, place);
+		}
 	}
 }
 
