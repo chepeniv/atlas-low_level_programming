@@ -11,8 +11,10 @@ int main(void)
 	char *p_str="_putchar";
 	int size = sizeof(&p_str);
 
-	for (i = 0 ; i <= size ; i++)
+	for (i = 0 ; i < size ; i++)
 		_putchar(p_str[i]);
+
+	_putchar('\n');
 
 	return (0);
 }
