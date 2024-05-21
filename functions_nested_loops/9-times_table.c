@@ -9,21 +9,13 @@
  */
 void print_num(int n)
 {
-	int f = n / 10;
-	int l = n % 10;
-	char cf = f + '0';
-	char cl = l + '0';
-
-	if (n > 9)
+	if (n < 10)
 	{
-		_putchar(cf);
-		_putchar(cl);
-	}
-	else
-	{
-		_putchar(32);
 		_putchar(n + '0');
+		return;
 	}
+	print_num(n / 10);
+	_putchar((n % 10) + '0');
 }
 
 /**
@@ -33,41 +25,36 @@ void print_num(int n)
  */
 void times_table(void)
 {
-	int a;
-	int b;
-	int c;
+	int row;
+	int column;
+	int product;
 
-	for (a = 0; a <= 9; ++a)
+	for (row = 0; row <= 9; ++row)
 	{
-		for (b = 0; b <= 9; ++b)
+		for (column = 0; column <= 9; ++column)
 		{
-			c = a * b;
+			product = row * column;
 
-			if (b == 0)
+			if (column == 0)
 			{
-				_putchar(c + '0');
-				_putchar(44);
-				_putchar(32);
+				_putchar(product + '0');
+				_putchar(',');
+				_putchar(' ');
 			}
-			else if (c < 10 && b < 9)
+			else if (column < 9)
 			{
-				print_num(c);
-				_putchar(44);
-				_putchar(32);
-			}
-			else if (b != 9)
-			{
-				print_num(c);
-				_putchar(44);
-				_putchar(32);
+				if (product < 10 ) _putchar(' ');
+				print_num(product);
+				_putchar(',');
+				_putchar(' ');
 			}
 			else
 			{
-				print_num(c);
+				if (product < 10 ) _putchar(' ');
+				print_num(product);
+				_putchar('\n');
 			}
 		}
-
-		_putchar(10);
-		b = 0;
+		column = 0;
 	}
 }
