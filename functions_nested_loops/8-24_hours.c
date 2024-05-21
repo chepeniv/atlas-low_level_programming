@@ -34,11 +34,6 @@ void jack_bauer(void)
  */
 void print_num(int n)
 {
-	int f = n / 10;
-	int l = n % 10;
-	char cf = f + '0';
-	char cl = l + '0';
-
-	_putchar(cf);
-	_putchar(cl);
+	_putchar(n / 10 + '0');
+	_putchar(n % 10 + '0');
 }
