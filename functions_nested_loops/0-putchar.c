@@ -8,11 +8,11 @@
 int main(void)
 {
 	int i;
-	char *p_str="_putchar";
-	int size = sizeof(&p_str);
+	char str[]="_putchar";
+	int size = sizeof(str);
 
 	for (i = 0 ; i < size ; i++)
-		_putchar(p_str[i]);
+		_putchar(str[i]);
 
 	_putchar('\n');
 
