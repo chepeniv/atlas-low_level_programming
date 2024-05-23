@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_triangle - printout a right-oriented right trangle with sides of a 
+ * print_triangle - printout a right-oriented right trangle with sides of a
  * given length
  * @side: the length of the triangle's side
  *
@@ -22,7 +22,7 @@ void print_triangle(int side)
 				{
 					_putchar(' ');
 				}
-				else 
+				else
 				{
 					_putchar('#');
 				}
