@@ -11,20 +11,20 @@ void print_diagonal(int length)
 	if (length > 0)
 	{
 		int segment = 1;
+		int space = 1;
 
 		while (segment <= length)
 		{
-			int space = 1;
-
 			while (space < segment)
 			{
 				_putchar(' ');
 				space++;
 			}
-
-			segment++;
 			_putchar('\\');
 			_putchar('\n');
+
+			segment++;
+			space = 1;
 		}
 	}
 	else
