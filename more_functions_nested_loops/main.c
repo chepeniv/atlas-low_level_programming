@@ -1,8 +1,9 @@
 #include "main.h"
 #include <stdio.h>
 
-int main(void) // testing my tasks sourcecode locally 
+/* testing task's sourcecode locally */
+int main(void) 
 {
-	print_numbers();
+	print_most_numbers();
 	return (0);
 }
