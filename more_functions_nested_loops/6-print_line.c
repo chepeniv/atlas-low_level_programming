@@ -11,6 +11,7 @@ void print_line(int length)
 	if (length > 0)
 	{
 		int position = 1;
+
 		while (position <= length)
 		{
 			_putchar('_');
