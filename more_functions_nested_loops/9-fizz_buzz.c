@@ -3,9 +3,9 @@
 /**
  * main - printout a square with sides of given length
  *
- * Return: void
+ * Return: 0 upon completion
  */
-void main(void)
+int main(void)
 {
 	int i;
 	for (i = 1; i <= 100; i++)
@@ -18,4 +18,5 @@ void main(void)
 			printf("%d", i);
 		printf(" ");
 	}
+	return (0);
 }
