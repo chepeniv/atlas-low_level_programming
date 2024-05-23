@@ -3,6 +3,7 @@
 /**
  * print_int - handle the printout of a two-digit integer greater than or equal
  * to zero
+ * @n: the number to printout
  *
  * Return: void
  */
@@ -33,7 +34,7 @@ void more_numbers(void)
 		}
 		_putchar('\n');
 
-		num = 0; 
+		num = 0;
 		line++;
 	}
 }
