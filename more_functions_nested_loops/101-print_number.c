@@ -8,22 +8,22 @@
  */
 void print_number(int n)
 {
-	int zero = 0;
-	int ten = 10;
-
-	if (n < zero)
+	if (sizeof(n) != sizeof(long))
 	{
-		_putchar('-');
-		n = -n;
+		if (n < 0)
+		{
+			_putchar('-');
+			n = -n;
+		}
+		if (n == 0)
+		{
+			_putchar('0');
+			return;
+		}
+		if (n / 10)
+		{
+			print_number(n / 10);
+		}
+		_putchar(n % 10 + '0');
 	}
-	if (n == zero)
-	{
-		_putchar('0');
-		return;
-	}
-	if (n / ten)
-	{
-		print_number(n / ten);
-	}
-	_putchar(n % ten + '0');
 }
