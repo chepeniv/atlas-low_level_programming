@@ -13,9 +13,12 @@ void print_array(int *array, int amount)
 	int iteration = 0;
 	int *position = array;
 
-	while (iteration <= amount)
+	while (iteration < amount)
 	{
-		printf("%d, ", *position);
+		if (iteration != amount - 1)
+			printf("%d, ", *position);
+		else
+			printf("%d", *position);
 		position++;
 		iteration++;
 	}
