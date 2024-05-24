@@ -11,4 +11,5 @@ void _puts(char *c)
 		_putchar(*c);
 		c++;
 	}
+	_putchar('\n');
 }
