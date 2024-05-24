@@ -9,3 +9,4 @@ void print_rev(char*);
 void rev_string(char*);
 void puts_half(char*);
 void print_array(int*, int);
+char *_strcpy(char*, char*);
