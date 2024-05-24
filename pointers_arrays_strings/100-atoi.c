@@ -3,7 +3,7 @@
 
 /**
  * _atoi - construct an integer from a given string
- * @source: pointer to string
+ * @string: pointer to string
  *
  * Return: resultant int
  */
@@ -14,15 +14,24 @@ int _atoi(char *string)
 	int sign = 1;
 	char character;
 
-	while (source[position] != '\0')
+	while (string[position] != '\0')
 	{
-		character = source[position];
+		character = string[position];
 
 		if (character == '-')
 			sign *= -1;
 		if (character >= '0' && character <= '9')
+		{
 			construction += (int)character - 48;
-
+			character = string[++position];
+			while (character >= '0' && character <= '9')
+			{
+				construction *= 10;
+				construction += (int)character - 48;
+				character = string[++position];
+			}
+			break;
+		}
 		position++;
 	}
 	construction *= sign;

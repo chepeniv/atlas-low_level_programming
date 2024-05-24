@@ -4,14 +4,23 @@
 /* testing task's sourcecode locally */
 int main(void) 
 {
-	char str[] = "the quick brown fox jumped over the lazy dog";
-	char str2[] = "hello, world!";
-	printf("%s\n", str);
-	puts_half(str);
-	printf("%s\n", str);
-	rev_string(str);
-	printf("%s\n", str);
-	//print_rev(str);
-	//_puts(str);
+	    int nb;
+
+    nb = _atoi("98");
+    printf("%d\n", nb);
+    nb = _atoi("-402");
+    printf("%d\n", nb);
+    nb = _atoi("          ------++++++-----+++++--98");
+    printf("%d\n", nb);
+    nb = _atoi("214748364");
+    printf("%d\n", nb);
+    nb = _atoi("0");
+    printf("%d\n", nb);
+    nb = _atoi("Suite 402");
+    printf("%d\n", nb);
+    nb = _atoi("         +      +    -    -98 Battery Street; San Francisco, CA 94111 - USA             ");
+    printf("%d\n", nb);
+    nb = _atoi("---++++ -++ Sui - te -   402 #cisfun :)");
+    printf("%d\n", nb);
 	return (0);
 }
