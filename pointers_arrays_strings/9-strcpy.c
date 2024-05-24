@@ -18,5 +18,7 @@ char *_strcpy(char *dest, char *source)
 		position++;
 	}
 
+	dest[position] = '\0';
+
 	return (dest);
 }
