@@ -17,7 +17,11 @@ void puts_half(char *c)
 		measure++;
 	}
 
-	length = length / 2;
+	if (length % 2 == 1)
+		length = (length - 1) / 2;
+	else
+		length = length / 2;
+
 	c = c + length;
 
 	while (*c != '\0')
