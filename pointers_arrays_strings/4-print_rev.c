@@ -16,6 +16,8 @@ void print_rev(char *c)
 		c++;
 	}
 
+	c--;
+
 	while (length >= 0)
 	{
 		_putchar(*c);
