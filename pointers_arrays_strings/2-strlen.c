@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * _strlen - count the number of characters in a given string
  * @c: pointer to the start of a string

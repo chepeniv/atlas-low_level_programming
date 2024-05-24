@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * swap_int - swaps the values of given variables
  * @a: first value to swap
