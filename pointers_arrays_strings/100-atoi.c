@@ -35,9 +35,11 @@ int _atoi(char *string)
 		}
 		position++;
 	}
-
+/*
 	if (sign < 0 && number == INT_MAX)
 		return INT_MIN;
 	else
 		return (number *= sign);
+*/
+	return (number *= sign);
 }
