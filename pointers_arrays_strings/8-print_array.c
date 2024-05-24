@@ -8,7 +8,7 @@
  *
  * Return: void
  */
-void puts_half(int *array, int amount)
+void print_array(int *array, int amount)
 {
 	int iteration = 0;
 	int *position = array;
