@@ -10,7 +10,7 @@
  */
 int _atoi(char *string)
 {
-	int construction = 0;
+	int number = 0;
 	int position = 0;
 	int sign = 1;
 	char character;
@@ -23,19 +23,19 @@ int _atoi(char *string)
 			sign *= -1;
 		if (character >= '0' && character <= '9')
 		{
-			construction += (int)character - 48;
+			number += (int)character - 48;
 			character = string[++position];
 			while (character >= '0' && character <= '9')
 			{
-				construction *= 10;
-				construction += (int)character - 48;
+				number *= 10;
+				number += (int)character - 48;
 				character = string[++position];
 			}
 			break;
 		}
 		position++;
 	}
-	construction *= sign;
+	number *= sign;
 
-	return (construction);
+	return (number);
 }
