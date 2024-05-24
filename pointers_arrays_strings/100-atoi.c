@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * _atoi - construct an integer from a given string
