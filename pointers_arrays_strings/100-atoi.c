@@ -22,11 +22,12 @@ int countDigits(int number)
  */
 int _atoi(char *string)
 {
-	int number = 0;
 	int position = 0;
 	int sign = 1;
 	int digits = 0;
+	int final = 0;
 	int maxDigits = countDigits(INT_MAX);
+	long number = 0;
 	char character;
 
 	while (string[position] != '\0')
@@ -41,23 +42,23 @@ int _atoi(char *string)
 			character = string[++position];
 			while (character >= '0' && character <= '9')
 			{
-				if (digits < maxDigits)
-				{
-					number *= 10;
-					number += (int)character - 48;
-					character = string[++position];
-				}
-				else
-				{
-					number = INT_MAX;
-				}
+				number *= 10;
+				number += (int)character - 48;
+				character = string[++position];
 			}
 			break;
 		}
 		position++;
 	}
 
-	if (sign < 0 && number == INT_MAX) return INT_MIN;
-	else number *= sign;
-	return (number);
+	if (sign < 0 && number > INT_MAX) 
+		final = INT_MIN;
+	else if (sign > 0 && number > INT_MAX) 
+		final = INT_MAX; 
+	else 
+	{
+		number *= sign;
+		final = (int) number;
+	}
+	return (final);
 }
