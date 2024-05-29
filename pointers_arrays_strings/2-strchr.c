@@ -17,5 +17,5 @@ char *_strchr(char* string, char csearch)
 			return &string[index];
 		index++;
 	}
-	return NULL;
+	return ('\0');
 }
