@@ -16,7 +16,7 @@ char *_strncat(char *head, char *tail, int select)
 	while (*stitch != '\0')
 		stitch++;
 
-	while (i <= select)
+	while (i < select)
 	{
 		*stitch = tail[i];
 		stitch++;
