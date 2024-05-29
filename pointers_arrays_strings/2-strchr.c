@@ -9,13 +9,14 @@
  */
 char *_strchr(char* string, char csearch)
 {
-	unsigned int index = 0;
+	int index = 0;
+	int length = sizeof(string) / sizeof(char);
 
-	while (string[index] != '\0')
+	while (index < length)
 	{
 		if (string[index] == csearch)
 			return &string[index];
 		index++;
 	}
-	return (&string[index]);
+	return (NULL);
 }
