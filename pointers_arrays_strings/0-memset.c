@@ -11,8 +11,8 @@
  */
 char *_memset(char *string, char value, unsigned int amount)
 {
-	int index = 0;
-	int size = sizeof(string);
+	unsigned int index = 0;
+	unsigned int size = sizeof(string);
 
 	while (index < amount && index < size - 1)
 	{
