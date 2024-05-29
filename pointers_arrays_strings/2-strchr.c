@@ -10,7 +10,7 @@
 char *_strchr(char* string, char csearch)
 {
 	int index = 0;
-	int length = sizeof(string) / sizeof(char);
+	int length = sizeof(*string) / sizeof(char);
 
 	while (index < length)
 	{
