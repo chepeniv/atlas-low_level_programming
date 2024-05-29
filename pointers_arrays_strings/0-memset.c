@@ -12,9 +12,9 @@
 char *_memset(char *string, char value, unsigned int amount)
 {
 	unsigned int index = 0;
-	unsigned int size = sizeof(string);
+	/*unsigned int size = sizeof(string);*/
 
-	while (index <= amount && index < size)
+	while (index <= amount/*&& index < size*/)
 	{
 		string[index] = value;
 		index++;
