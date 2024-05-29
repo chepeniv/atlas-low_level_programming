@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _memset - fills the first n number of memory addresses of a given string 
+ * _memset - fills the first n number of memory addresses of a given string
  * array with a constant value
  * @string: the string to operate on
  * @value: the char value to overwrite into prefix positions
@@ -19,5 +19,5 @@ char *_memset(char *string, char value, unsigned int amount)
 		string[index] = value;
 		index++;
 	}
-	return string;
+	return (string);
 }
