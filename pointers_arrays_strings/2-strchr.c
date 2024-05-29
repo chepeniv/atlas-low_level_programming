@@ -10,13 +10,16 @@
 char *_strchr(char* string, char csearch)
 {
 	int index = 0;
-	int length = sizeof(*string) / sizeof(char);
 
-	while (index < length)
+	while (string[index] != '\0')
 	{
 		if (string[index] == csearch)
 			return &string[index];
 		index++;
 	}
-	return (NULL);
+
+	if (string[index] == csearch)
+		return &string[index];
+	else
+		return (NULL);
 }
