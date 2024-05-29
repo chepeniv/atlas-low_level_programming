@@ -7,7 +7,7 @@
  *
  * Return: a pointer to the modified head string
  */
-char *_strcat(char *head, char *tail);
+char *_strcat(char *head, char *tail)
 {
 	char *stitch = head;
 	int i= 0;
