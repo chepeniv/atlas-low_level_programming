@@ -10,7 +10,7 @@
 char *_strcat(char *head, char *tail)
 {
 	char *stitch = head;
-	int i= 0;
+	int i = 0;
 
 	while (*stitch != '\0')
 		stitch++;
