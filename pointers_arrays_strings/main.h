@@ -16,3 +16,4 @@ char *_memcpy(char*, char*, unsigned int);
 char *_strchr(char*, char);
 unsigned int _strspn(char*, char*);
 char *_strcat(char*, char*);
+char *_strncat(char*, char*, int);
