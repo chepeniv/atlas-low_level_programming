@@ -11,3 +11,4 @@ void puts_half(char*);
 void print_array(int*, int);
 char *_strcpy(char*, char*);
 int _atoi(char*);
+char *_memset(char*, char, unsigned int);
