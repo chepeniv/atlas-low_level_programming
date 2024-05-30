@@ -9,21 +9,21 @@
  * Return: an unsigned int denoting the length of the substring containing only
  * char's in the accept-set
  */
-unsigned int _strspn(char *check_str, char *accept_set)
+unsigned int _strspn(char *check, char *accept)
 {
 	unsigned int a = 0;
 	unsigned int b = 0;
 
-	while (accept_set[a] != '\0')
+	while (accept[a] != '\0')
 	{
-		while (check_str[b] != '\0')
+		while (check[b] != '\0')
 		{
-			if (accept_set[a] == check_str[b])
+			if (accept[a] == check[b])
 				break;
 			b++;
 		}
 
-		if (accept_set[a] == '\0')
+		if (check[b] == '\0')
 			return (a++);
 
 		b = 0;
