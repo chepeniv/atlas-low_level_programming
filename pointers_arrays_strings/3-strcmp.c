@@ -8,7 +8,7 @@
  * Return: 0 if strings are identical, or upon on the first char inequality,
  * return the differnce in value of the char's ascii codes (charA - charB)
  */
-int _strcmp(char *strA, char *strB);
+int _strcmp(char *strA, char *strB)
 {
 	int diff;
 	int i = 0;
