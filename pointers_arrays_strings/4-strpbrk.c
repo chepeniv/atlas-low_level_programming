@@ -8,7 +8,7 @@
  *
  * Return: a char* denoting the first occurance 
  */
-char *_strpbrk(char *target, char *accept);
+char *_strpbrk(char *target, char *accept)
 {
 	int a;
 	int b;
