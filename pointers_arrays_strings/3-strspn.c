@@ -19,14 +19,10 @@ unsigned int _strspn(char *check_str, char *accept_set)
 	{
 		while (accept_set[b] != '\0')
 		{
-			if (accept_set[a] == check_str[b])
+			if (check_str[a] == accept_set[b])
 			{
 				size++; 
 				break;
-			}
-			else
-			{
-				return (size);
 			}
 			b++;
 		}
