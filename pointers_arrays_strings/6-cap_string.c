@@ -12,27 +12,15 @@ char *cap_string(char *string)
 
 	while (string[i] != '\0')
 	{
-		if (
-		string[i] == ' ' ||
-		string[i] == '\t' ||
-		string[i] == '\n' ||
-		string[i] == ',' ||
-		string[i] == ';' ||
-		string[i] == '.' ||
-		string[i] == '!' ||
-		string[i] == '?' ||
-		string[i] == '"' ||
-		string[i] == '(' ||
-		string[i] == ')' ||
-		string[i] == '{' ||
-		string[i] == '}'
-		)
+		if (string[i] >= 'a' && string[i] <= 'z')
 		{
-			i++;
-			if (string[i] >= 'a' && string[i] <= 'z')
+			if (
+			string[i - 1] <= 'a' && 
+			string[i - 1] >= 'z' &&
+			string[i - 1] <= 'A' && 
+			string[i - 1] >= 'Z'
+			)
 				string[i] -= 32;
-			if (string[i] == '\0')
-				break;
 		}
 		i++;
 	}
