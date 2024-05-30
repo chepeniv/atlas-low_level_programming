@@ -14,20 +14,20 @@ unsigned int _strspn(char *check, char *accept)
 	unsigned int a = 0;
 	unsigned int b = 0;
 
-	while (accept[a] != '\0')
+	while (check[a] != '\0')
 	{
-		while (check[b] != '\0')
+		while (accept[b] != '\0')
 		{
-			if (accept[a] == check[b])
+			if (accept[b] == check[a])
 				break;
 			b++;
 		}
 
-		if (check[b] == '\0')
+		if (accept[b] == '\0')
 			return (a++);
 
 		b = 0;
 		a++;
 	}
-	return (a);
+	return (a++);
 }
