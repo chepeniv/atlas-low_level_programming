@@ -10,12 +10,6 @@ char *cap_string(char *string)
 {
 	int i = 0;
 
-	if (string[i] >= 'a' && string[i] <= 'z')
-	{
-		string[i] -= 32;
-		i++;
-	}
-
 	while (string[i] != '\0')
 	{
 		if (string[i] >= 'a' && string[i] <= 'z')
@@ -42,3 +36,4 @@ char *cap_string(char *string)
 
 	return (string);
 }
+char *leet(char*);
