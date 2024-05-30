@@ -24,6 +24,10 @@ unsigned int _strspn(char *check_str, char *accept_set)
 				size++; 
 				break;
 			}
+			else
+			{
+				return (size);
+			}
 			b++;
 		}
 
