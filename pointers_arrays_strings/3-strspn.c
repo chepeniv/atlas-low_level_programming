@@ -11,25 +11,24 @@
  */
 unsigned int _strspn(char *check_str, char *search_set)
 {
-	unsigned int i = 0;
-	unsigned int j = 0;
+	unsigned int a = 0;
+	unsigned int b = 0;
 	unsigned int size = 0;
-	unsigned int found = 0;
-	unsigned int total = 0;
 
-	while (check_str[i] != '\0')
+	while (search_set[a] != '\0')
 	{
-		while (search_set[j] != '\0')
+		while (check_str[b] != '\0')
 		{
-			if (check_str[i] == search_set[j])
+			if (search_set[a] == check_str[b])
 			{
-				size = i + 1; 
+				if (size <= a)
+					size = a + 1; 
 				break;
 			}
-			j++;
+			b++;
 		}
-		j = 0;
-		i++;
+		b = 0;
+		a++;
 	}
 	return (size);
 }
