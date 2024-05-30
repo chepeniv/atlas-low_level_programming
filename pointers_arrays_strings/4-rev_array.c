@@ -13,7 +13,7 @@ void reverse_array(int *num_array, int length)
 	int pos = 0;
 	int halfway = length / 2;
 
-	while (pos < halfway)
+	while (pos <= halfway)
 	{
 		hold = num_array[pos];
 		num_array[pos] = num_array[length - pos];
