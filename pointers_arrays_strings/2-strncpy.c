@@ -1,40 +1,26 @@
 #include "main.h"
 
 /**
- * _strncat - concatenate 'select' bytes of one string onto another
- * @head: the leading string
- * @tail: the trailing string
- * @select: the number of bytes to take from 'tail'
+ * _strncpy - copy the first 'select' bytes from 'source' onto 'dest'
+ * @dest: the location in memory to copy data to 
+ * @src: the string containing the data to copy from
+ * @select: the number of bytes to copy from 'src'
  *
- * Return: a pointer to the modified head string
+ * Return: a pointer to the location of the duplicated data
  */
-char *_strncat(char *head, char *tail, int select)
+char *_strncpy(char *dest, char *src, int select)
 {
-	char *stitch = head;
 	int i = 0;
 
-	while (*stitch != '\0')
-		stitch++;
-
-	while (i < select)
+	while (i < select && src[i] != '\0')
 	{
-		*stitch = tail[i];
-		stitch++;
+		dest[i] = src[i];
 		i++;
 	}
-
-	return (head);
-}
-char *_strncpy(char*, char*, int);
-{
-	size_t i;
-
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[i] = src[i];
-	for ( ; i < n; i++)
+	while (i < select)
+	{
 		dest[i] = '\0';
-
-	return dest;
+		i++;
+	}
+	return (dest);
 }
-
-
