@@ -51,8 +51,8 @@ void print_diagsums(int *matrix, int size)
 	}
 
 	print_int(sumA);
-	_putchar(',')
-	_putchar(' ')
+	_putchar(',');
+	_putchar(' ');
 	print_int(sumB);
-	_putchar('\n')
+	_putchar('\n');
 }
