@@ -1,0 +1,58 @@
+#include "main.h"
+
+/**
+ * print_int - printout a given int using only _putchar
+ * @n: the number to printout
+ *
+ * Return: void
+ */
+void print_int(int n)
+{
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+	if (n == 0)
+	{
+		print_int('0');
+		return;
+	}
+	if (n / 10)
+		print_int(n / 10);
+	
+	_putchar(n % 10 + '0');
+}
+
+/**
+ * print_diagsum - printout out the diagonal sums of a given 2D matrix
+ * @matrix: the matrix to calculate sums from
+ * @size: size of the given matrix
+ *
+ * Return: void
+ */
+void print_diagsums(int *matrix, int size)
+{
+	int sumA = 0;
+	int sumB = 0;
+	int index = 0;
+
+	while (index < size)
+	{
+		sumA += matrix[index][index];
+		index++;
+	}
+
+	index = 0;
+	while (index < size)
+	{
+		sumB += matrix[index][size - index];
+		index++;
+	}
+
+	print_int(sumA);
+	_putchar(',';
+	_putchar(' ';
+	print_int(sumB);
+	_putchar('\n';
+}

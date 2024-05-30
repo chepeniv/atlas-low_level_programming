@@ -26,3 +26,4 @@ char *leet(char*);
 char *_strpbrk(char*, char*);
 char *_strstr(char*, char*);
 void print_chessboard(char (*a)[8]);
+void print_diagsums(int*, int);
