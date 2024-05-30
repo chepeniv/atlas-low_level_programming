@@ -3,8 +3,8 @@
 /**
  * _strspn - find the length of the prefix substring wherein _only_ a given set
  * of characters occur
- * @check_str: the string to analyse through
- * @accept_set: the string containing chars that will be accepted
+ * @check: the string to analyse through
+ * @accept: the string containing chars that will be accepted
  *
  * Return: an unsigned int denoting the length of the substring containing only
  * char's in the accept-set
