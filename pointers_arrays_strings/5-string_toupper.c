@@ -6,9 +6,9 @@
  *
  * Return: pointer to string
  */
-void reverse_array(int *string)
+void string_toupper(int *string)
 {
-	int pos = 0;
+	int i = 0;
 
 	while (string[i] != '\0')
 	{
