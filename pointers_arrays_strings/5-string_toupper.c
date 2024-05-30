@@ -6,7 +6,7 @@
  *
  * Return: pointer to string
  */
-void reverse_array(int *num_array, int length)
+void reverse_array(int *string)
 {
 	int pos = 0;
 
