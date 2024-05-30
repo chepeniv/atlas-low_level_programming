@@ -14,6 +14,8 @@ unsigned int _strspn(char *check_str, char *search_set)
 	unsigned int i = 0;
 	unsigned int j = 0;
 	unsigned int size = 0;
+	unsigned int found = 0;
+	unsigned int total = 0;
 
 	while (check_str[i] != '\0')
 	{
