@@ -2,7 +2,7 @@
 
 /**
  * _strncpy - copy the first 'select' bytes from 'source' onto 'dest'
- * @dest: the location in memory to copy data to 
+ * @dest: the location in memory to copy data to
  * @src: the string containing the data to copy from
  * @select: the number of bytes to copy from 'src'
  *
