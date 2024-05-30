@@ -6,7 +6,7 @@
  *
  * Return: pointer to string
  */
-void string_toupper(int *string)
+char *string_toupper(int *string)
 {
 	int i = 0;
 
@@ -14,6 +14,6 @@ void string_toupper(int *string)
 	{
 		if (string[i] >= 'a' && string[i] <= 'z')
 			string[i] -= 32;
-		pos++;
+		i++;
 	}
 }
