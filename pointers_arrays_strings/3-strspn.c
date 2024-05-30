@@ -24,11 +24,13 @@ unsigned int _strspn(char *check_str, char *accept_set)
 				size++; 
 				break;
 			}
+			if (check_str[a] != accept_set[b])
+				return (size);
 			b++;
 		}
 
 		if (accept_set[a] == '\0')
-			break;
+			return (size);
 
 		b = 0;
 		a++;
