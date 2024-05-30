@@ -6,7 +6,7 @@
  *
  * Return: pointer to string
  */
-char *cap_string(char *string);
+char *cap_string(char *string)
 {
 	int i = 0;
 
