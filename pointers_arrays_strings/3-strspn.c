@@ -13,27 +13,21 @@ unsigned int _strspn(char *check_str, char *accept_set)
 {
 	unsigned int a = 0;
 	unsigned int b = 0;
-	unsigned int size = 0;
 
-	while (check_str[a] != '\0')
+	while (accept_set[a] != '\0')
 	{
-		while (accept_set[b] != '\0')
+		while (check_str[b] != '\0')
 		{
-			if (check_str[a] == accept_set[b])
-			{
-				size++; 
+			if (accept_set[a] == check_str[b])
 				break;
-			}
-			if (check_str[a] != accept_set[b])
-				return (size);
 			b++;
 		}
 
 		if (accept_set[a] == '\0')
-			return (size);
+			return (a++);
 
 		b = 0;
 		a++;
 	}
-	return (size);
+	return (a);
 }
