@@ -6,7 +6,7 @@
  * @target: the string to analyse through
  * @accept: the string containing chars that will be accepted
  *
- * Return: a char* denoting the first occurance 
+ * Return: a char* denoting the first occurance
  */
 char *_strpbrk(char *target, char *accept)
 {
