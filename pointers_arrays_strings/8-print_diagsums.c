@@ -25,7 +25,7 @@ void print_int(int n)
 }
 
 /**
- * print_diagsum - printout out the diagonal sums of a given 2D matrix
+ * print_diagsums - printout out the diagonal sums of a given 2D matrix
  * @matrix: the matrix to calculate sums from
  * @size: size of the given matrix
  *
