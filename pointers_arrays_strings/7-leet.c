@@ -21,7 +21,7 @@ char *leet(char *text)
 	t = 0;
 	while (text[t] != '\0')
 	{
-		l = 0
+		l = 0;
 		while (l < 8)
 		{
 			if (text[t] == leet[l] || text[t] == leet[l] + 32)
