@@ -1,39 +1,59 @@
 #include "main.h"
 
 /**
- * cap_string - capitalize every word in a given string
- * @string: the string to operate on
+ * leet - translates given text into leet-speak
+ * @text: the string to operate on
  *
  * Return: pointer to string
+ *
+ * RULES :
+ * 	one if
+ * 	two loops
+ * 	no swtich
+ * 	no ternary
  */
-char *cap_string(char *string)
+char *leet(char *text)
 {
-	int i = 0;
+	int t = 0;
+	int l = 0;
 
-	while (string[i] != '\0')
+	char leet[8][2] = {
+		{'o', 'O'},
+		{'l', 'L'},
+		{'2', '2'},
+		{'e', 'E'},
+		{'a', 'A'},
+		{'5', '5'},
+		{'6', '6'},
+		{'t', 'T'}
+	}; // a = A + 32;
+
+	while (text[i] != '\0')
 	{
-		if (string[i] >= 'a' && string[i] <= 'z')
+		//while not the end of comparisons
+		//	set some value, a pointer ??
+		//	set an index ?? 
+		//if some value set 
+		//	operate ??
+		//	use an index to properly operate ?
+
+		if (
+		text[i] == 'a' || 
+		text[i] == 'A' ||
+		text[i] == 'e' || 
+		text[i] == 'E' ||
+		text[i] == 'o' ||
+		text[i] == 'O' ||
+		text[i] == 't' ||
+		text[i] == 'T' ||
+		text[i] == 'l' ||
+		text[i] == 'L'
+		)
 		{
-			if (
-			string[i - 1] == ' ' || 
-			string[i - 1] == '\t' ||
-			string[i - 1] == '\n' || 
-			string[i - 1] == ',' ||
-			string[i - 1] == ';' ||
-			string[i - 1] == '.' ||
-			string[i - 1] == '!' ||
-			string[i - 1] == '?' ||
-			string[i - 1] == '"' ||
-			string[i - 1] == '(' ||
-			string[i - 1] == ')' ||
-			string[i - 1] == '{' ||
-			string[i - 1] == '}'
-			)
-				string[i] -= 32;
+
 		}
 		i++;
 	}
 
-	return (string);
+	return (text);
 }
-char *leet(char*);
