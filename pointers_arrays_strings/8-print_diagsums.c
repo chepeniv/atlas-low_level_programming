@@ -39,14 +39,14 @@ void print_diagsums(int *matrix, int size)
 
 	while (index < size)
 	{
-		sumA += *(matrix + (index * size) + index);
+		sumA += *(matrix + (size * index) + index);
 		index++;
 	}
 
 	index = 0;
 	while (index < size)
 	{
-		sumB += *(matrix + (index * size) + size - index);
+		sumB += *(matrix + (size * index) + size - index - 1);
 		index++;
 	}
 
