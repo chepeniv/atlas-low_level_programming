@@ -5,18 +5,12 @@
  * @text: the string to operate on
  *
  * Return: pointer to string
- *
- * RULES :
- * 	one if
- * 	two loops
- * 	no swtich
- * 	no ternary
  */
 char *leet(char *text)
 {
 	int t;
 	int l;
-	char leet[] = {'O', 'L', '\0', 'E', 'A', '\0', '\0', 'T'}; 
+	char leet[] = {'O', 'L', '\0', 'E', 'A', '\0', '\0', 'T'};
 
 	t = 0;
 	while (text[t] != '\0')
