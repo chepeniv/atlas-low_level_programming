@@ -24,8 +24,7 @@ char *leet(char *text)
 		l = 0
 		while (l < 8)
 		{
-			if (leet[l] != '\0' && 
-			(text[t] == leet[l] || text[t] == leet[l] + 32))
+			if (text[t] == leet[l] || text[t] == leet[l] + 32)
 			{
 				text[t] = l + '0';
 				break;
