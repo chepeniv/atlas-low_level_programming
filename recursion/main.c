@@ -1,5 +1,5 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 int main(void)
 {
@@ -10,9 +10,11 @@ int main(void)
 	printf("\t%s\n", strA);
 	printf("\t%s\n", strB);
 	printf("function test :\n");
-	
-	_puts_recursion(strA);
-	_puts_recursion(strB);
+	_putchar('\n');
+	_print_rev_recursion(strA);
+	_putchar('\n');
+	_print_rev_recursion(strB);
+	_putchar('\n');
 
 	return (0);
 }
