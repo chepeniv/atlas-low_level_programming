@@ -9,12 +9,9 @@ int main(void)
 	printf("test strings :\n");
 	printf("\t%s\n", strA);
 	printf("\t%s\n", strB);
+
 	printf("function test :\n");
-	_putchar('\n');
-	_print_rev_recursion(strA);
-	_putchar('\n');
-	_print_rev_recursion(strB);
-	_putchar('\n');
+	printf("the string given is %d long\n", _strlen_recursion(strA));
 
 	return (0);
 }
