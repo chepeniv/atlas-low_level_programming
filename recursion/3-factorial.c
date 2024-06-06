@@ -13,5 +13,5 @@ int factorial(int number)
 	else if (number <= 1)
 		return (1);
 	else
-		return (number * factorial(number--));
+		return (number * factorial(number - 1));
 }
