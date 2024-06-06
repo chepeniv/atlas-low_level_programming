@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _pow_recursion - calculate the product of `base` multiplied by itself 
+ * _pow_recursion - calculate the product of `base` multiplied by itself
  * `power` number of times
  * @base: integer to multiply
  * @power: number of multiplications
