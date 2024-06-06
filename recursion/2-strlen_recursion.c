@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _print_rev_recursion - prints out string in reverse without a new line by
- * calling itself recursively
- * @string: the pointer to the string
+ * _strlen_recursion - calculates the length of a given string by calling
+ * itself recursively
+ * @string: pointer to the string
  *
- * Return: void
+ * Return: an int indicating the size of the string passed
  */
 int _strlen_recursion(char *string)
 {
