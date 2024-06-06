@@ -1,7 +1,8 @@
 #include "main.h"
 
 /**
- * _puts_recursion - prints out string by calling itself recursively
+ * _print_rev_recursion - prints out string in reverse without a new line by
+ * calling itself recursively
  * @string: the pointer to the string
  *
  * Return: void
