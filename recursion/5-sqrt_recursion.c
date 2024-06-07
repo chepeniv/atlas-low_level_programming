@@ -1,5 +1,7 @@
 #include "main.h"
 
+int rec_calc_sqrt(int guess, int target);
+
 /**
  * _sqrt_recursion - calculate the natural square root of a number recursivly
  * @num: integer to calculate for
