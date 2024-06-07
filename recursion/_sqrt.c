@@ -2,58 +2,19 @@
 #include "main.h"
 
 int _sqrt(int target);
+int _sqrt_test(int test);
 
 int main(void)
 {
-	int result, target;
-
-	target = 9;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = -2;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 44;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 100;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 36;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 0;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 1;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 81;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 223;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 16;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 144;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
-
-	target = 121;
-	result = _sqrt(target);
-	printf("for %d, sqrt returns %d\n", target, result);
+	_sqrt_test(9);
+	_sqrt_test(-8);
+	_sqrt_test(36);
+	_sqrt_test(0);
+	_sqrt_test(1);
+	_sqrt_test(118);
+	_sqrt_test(16);
+	_sqrt_test(7);
+	_sqrt_test(144);
 
 	return (0);
 }
@@ -66,6 +27,9 @@ int _sqrt(int target)
 	if (target < 0 )
 		return (-1);
 
+	// if sqrt(--target) < target
+	// 	
+	// else if sqrt
 	while (square <= target)
 	{
 		square = guess * guess;
@@ -75,4 +39,10 @@ int _sqrt(int target)
 	}
 	
 	return (-1);
+}
+
+int _sqrt_test(int test)
+{
+	int result = _sqrt(test);
+	printf("for %d, sqrt returns %d\n", test, result);
 }
