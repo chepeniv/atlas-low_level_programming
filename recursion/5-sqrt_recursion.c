@@ -15,7 +15,7 @@ int _sqrt_recursion(int num)
 	if (num < 0)
 		return (-1);
 	else
-		return (rec_calc_sqr(guess, num));
+		return (rec_calc_sqrt(guess, num));
 }
 
 /**
@@ -26,7 +26,7 @@ int _sqrt_recursion(int num)
  *
  * Return: int result
  */
-int rec_calc_sqrt(int guess, int target);
+int rec_calc_sqrt(int guess, int target)
 {
 	int square = guess * guess;
 
