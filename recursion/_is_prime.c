@@ -1,27 +1,27 @@
 #include "main.h"
 
+int _sqrt(int num);
 int _calc_sqrt(int guess, int target);
 
-int is_prime_number(int number)
+int is_prime_number(int num)
 {
-	is prime number return 1;
-	is not prime number return 0;
-	sieve_of_eratos;
-	build an array initialized to all 1 that is the size of number;
-	calculate the upperbound of calculations using the sqrt of number;
-	iteratively markout nonprimes in the array;
-		stop and return if the array[number] position becomes 0;
-		or the upper sqrt bound is reached;
-			return the array[number] pos value;
+	int sieve[] = { [0 ... num + 1] = 1 };
+	int upperbound = _sqrt[num];
+	int factor = 2;
+	int multiple = 0;
+
+	while (factor <= upperbound)
+		multiple = factor + factor;
+		while (mutiple <= num + 1)
+			sieve[multiple] = 0;
+			multiple += factor;
+		if (sieve[num + 1] == 0)
+			return 0;		
+		factor++;
+
+	return sieve[num + 1];
 }
 
-
-/**
- * _sqrt - calculate the natural square root of a number recursivly
- * @num: integer to calculate for
- *
- * Return: int result
- */
 int _sqrt(int num)
 {
 	int guess = 0;
@@ -32,23 +32,13 @@ int _sqrt(int num)
 		return (_calc_sqrt(guess, num));
 }
 
-/**
- * rec_calc_sqrt - handles the sqrt caculation for its parent by using two
- * params
- * @guess: used to calculate a square
- * @target: the value to attemp to match with a square
- *
- * Return: int result
- */
 int _calc_sqrt(int guess, int target)
 {
 	int square = guess * guess;
 
-	if (square == target)
+	if (square >= target)
 		return (guess);
-	else if (square < target)
-		return (_calc_sqrt(++guess, target));
 	else
-		return (-1);
+		return (_calc_sqrt(++guess, target));
 }
 
