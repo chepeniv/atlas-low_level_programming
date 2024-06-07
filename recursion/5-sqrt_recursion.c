@@ -8,7 +8,23 @@
  */
 int _sqrt_recursion(int num)
 {
-	if (num < 4)
+	int guess = 0;
+
+	if (num < 0)
 		return (-1);
-	return (base * _pow_recursion(base, power - 1));
+	else
+		return rec_calc_sqrt(guess, num);
 }
+
+int rec_calc_sqrt(int guess, int target)
+{
+	int square = guess * guess;
+
+	if (square == target)
+		return (guess);
+	else if (square < target)
+		return (rec_calc_sqrt(++guess, target);
+	else
+		return (-1);
+}
+

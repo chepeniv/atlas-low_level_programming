@@ -44,6 +44,7 @@ int rec_sqrt(int target)
 int rec_calc(int guess, int target)
 {
 	int square = guess * guess;
+
 	if (square == target) 
 		return guess;
 	else if (square < target)
