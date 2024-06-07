@@ -19,7 +19,7 @@ int _sqrt_recursion(int num)
 }
 
 /**
- * rec_calc_sqrt - handles the sqrt caculation for its parent by using two 
+ * rec_calc_sqrt - handles the sqrt caculation for its parent by using two
  * params
  * @guess: used to calculate a square
  * @target: the value to attemp to match with a square
