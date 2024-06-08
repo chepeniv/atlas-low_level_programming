@@ -1,67 +1,51 @@
 #include "main.h"
 #include <stdio.h>
 
+int test_multiples(int target, int factor, int multiple);
+int test_factors(int target, int upperbound, int factor);
+
 int _sqrt(int target, int guess)
 {
 	int square = guess * guess;
+
 	if (square >= target)
 		return (guess);
 	else
 		return (_sqrt(target, ++guess));
 }
 
-void init_array(int array[], int target, int pos)
-{
-	if (pos > target)
-	{
-		return;
-	}
-	else
-	{
-		array[pos] = 1;
-		init_array(array, target, ++pos);
-	}
-}
-
-void find_multiples(int sieve[], int target, int factor, int multiple)
-{
-	if (multiple > target)
-		return;
-	else
-	{
-		sieve[multiple] = 0;
-		multiple += factor;
-		find_multiples(sieve, target, factor, multiple);
-	}
-}
-
-int sift_primes(int sieve[], int target, int upperbound, int factor)
-{
-	if (factor > upperbound)
-		return sieve[target];
-	else if (sieve[factor] == 1)
-	{
-		find_multiples(sieve, target, factor, factor * 2);
-		if (sieve[target] == 0)
-			return 0;		
-	}
-	else
-		return (sift_primes(sieve, target, upperbound, ++factor));
-}
-
 int is_prime_number(int target)
 {
 	int upperbound, factor, multiple;
-	int sieve[target + 1];
+
 	if (target <= 1 )
 		return 0;
 	else
 	{
 		upperbound = _sqrt(target, 2);
 		factor = 2;
-		init_array(sieve, target, 0);
-		return sift_primes(sieve, target, upperbound, factor);
 	}
+
+	return test_factors(target, upperbound, factor);
+}
+
+int test_factors(int target, int upperbound, int factor)
+{
+	if (factor > upperbound)
+		return 1;
+	if (test_multiples(target, factor, factor * 2) == 0)
+		return 0;
+	return test_factors(target, upperbound, factor + 1);
+}
+
+int test_multiples(int target, int factor, int multiple)
+{
+	if (multiple > target)
+		return -1;
+	else if (multiple == target)
+		return 0;
+	else
+		return test_multiples(target, factor, multiple + factor);
 }
 
 /**
