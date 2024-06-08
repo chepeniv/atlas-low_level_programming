@@ -8,7 +8,15 @@ void test_func(int num);
 
 int main(void)
 {
+	test_func(1);
+	test_func(2);
+	test_func(4);
+	test_func(5);
 	test_func(7);
+	test_func(8);
+	test_func(9);
+	test_func(25);
+	test_func(31);
 	return (0);
 }
 
@@ -40,7 +48,7 @@ int is_prime(int num)
 	int upperbound, factor, multiple, i;
 	int sieve[num + 1];
 
-	if (num <= 2 )
+	if (num <= 1 )
 		return 0;
 	else
 	{
