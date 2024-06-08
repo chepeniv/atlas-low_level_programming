@@ -8,15 +8,9 @@ void test_func(int num);
 
 int main(void)
 {
-	test_func(1);
-	test_func(2);
-	test_func(4);
-	test_func(5);
-	test_func(7);
-	test_func(8);
-	test_func(9);
-	test_func(25);
-	test_func(31);
+	int i;
+	for (i = 0; i < 50; i++)
+		test_func(i);
 	return (0);
 }
 
@@ -30,7 +24,7 @@ void test_func(int num)
 	else
 		result = "NOT prime";
 
-	printf("the given integer %d is %s\n", num, result);
+	printf("%d is %s\n", num, result);
 }
 
 int _sqrt(int guess, int target)
