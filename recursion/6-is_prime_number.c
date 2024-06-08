@@ -31,14 +31,11 @@ int is_prime_number(int target)
 {
 	int upperbound, factor;
 
-	if (target <= 1 )
+	if (target <= 1)
 		return (0);
-	else
-	{
-		upperbound = _sqrt(target, 2);
-		factor = (2);
-	}
 
+	upperbound = _sqrt(target, 2);
+	factor = (2);
 	return (test_factors(target, upperbound, factor));
 }
 
@@ -57,7 +54,7 @@ int test_factors(int target, int upperbound, int factor)
 		return (1);
 	if (test_multiples(target, factor, factor * 2) == 0)
 		return (0);
-	return test_factors(target, upperbound, factor + 1);
+	return (test_factors(target, upperbound, factor + 1));
 }
 
 /**
