@@ -16,7 +16,7 @@ int _sqrt(int target, int guess)
 
 int is_prime_number(int target)
 {
-	int upperbound, factor, multiple;
+	int upperbound, factor;
 
 	if (target <= 1 )
 		return 0;
