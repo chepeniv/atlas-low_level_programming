@@ -4,6 +4,13 @@
 int test_multiples(int target, int factor, int multiple);
 int test_factors(int target, int upperbound, int factor);
 
+/**
+ * _sqrt - calculate the natural square root of a number recursively
+ * @target: integer to investigate
+ * @guess: candidate root
+ *
+ * Return: int result
+ */
 int _sqrt(int target, int guess)
 {
 	int square = guess * guess;
@@ -14,55 +21,44 @@ int _sqrt(int target, int guess)
 		return (_sqrt(target, ++guess));
 }
 
+/**
+ * is_prime_number - determine if the given number is a prime
+ * @num: integer to investigate
+ *
+ * Return: an int value of 1 for prime or 0 for not prime
+ */
 int is_prime_number(int target)
 {
 	int upperbound, factor;
 
 	if (target <= 1 )
-		return 0;
+		return (0);
 	else
 	{
 		upperbound = _sqrt(target, 2);
-		factor = 2;
+		factor = (2);
 	}
 
-	return test_factors(target, upperbound, factor);
+	return (test_factors(target, upperbound, factor));
 }
 
+/**
+ * test_factors - find all prime positions in given array
+ * @sieve: integer to investigate
+ * @target: integer to investigate
+ * @upperbound: integer to investigate
+ * @factor: integer to investigate
+ *
+ * Return: an int value of 1 for prime or 0 for not prime
+ */
 int test_factors(int target, int upperbound, int factor)
 {
 	if (factor > upperbound)
-		return 1;
+		return (1);
 	if (test_multiples(target, factor, factor * 2) == 0)
-		return 0;
+		return (0);
 	return test_factors(target, upperbound, factor + 1);
 }
-
-int test_multiples(int target, int factor, int multiple)
-{
-	if (multiple > target)
-		return -1;
-	else if (multiple == target)
-		return 0;
-	else
-		return test_multiples(target, factor, multiple + factor);
-}
-
-/**
- * _sqrt - calculate the natural square root of a number recursivly
- * @num: integer to calculate for
- *
- * Return: int result
- */
-
-/**
- * init_array - set all values of given array to 1
- * @array: pointer to the array to operate on
- * @max: determines how far in the array to work on
- * @pos: the current working index 
- *
- * Return: void
- */
 
 /**
  * find_multiples - traverse an array and set each multiple position of a
@@ -74,20 +70,12 @@ int test_multiples(int target, int factor, int multiple)
  *
  * Return: void
  */
-
-/**
- * sift_primes - find all prime positions in given array
- * @sieve: integer to investigate
- * @target: integer to investigate
- * @upperbound: integer to investigate
- * @factor: integer to investigate
- *
- * Return: an int value of 1 for prime or 0 for not prime
- */
-
-/**
- * is_prime_number - determine if the given number is a prime
- * @num: integer to investigate
- *
- * Return: an int value of 1 for prime or 0 for not prime
- */
+int test_multiples(int target, int factor, int multiple)
+{
+	if (multiple > target)
+		return (-1);
+	else if (multiple == target)
+		return (0);
+	else
+		return (test_multiples(target, factor, multiple + factor));
+}
