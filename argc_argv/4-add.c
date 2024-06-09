@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 			num = atoi(argv[i]);
 			sum += num;
 		}
-		else 
+		else
 		{
 			printf("Error\n");
 			return (1);
