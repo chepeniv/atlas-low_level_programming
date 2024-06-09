@@ -27,23 +27,22 @@ int _sqrt(int target, int guess)
  *
  * Return: an int value of 1 for prime or 0 for not prime
  */
-int is_prime_number(int target)
+int is_prime_number(int num)
 {
 	int upperbound, factor;
 
-	if (target <= 1)
+	if (num <= 1)
 		return (0);
 
-	upperbound = _sqrt(target, 2);
+	upperbound = _sqrt(num, 2);
 	factor = (2);
-	return (test_factors(target, upperbound, factor));
+	return (test_factors(num, upperbound, factor));
 }
 
 /**
- * test_factors - find all prime positions in given array
- * @sieve: integer to investigate
+ * test_factors - determine if any factor upto upperbound divides target
  * @target: integer to investigate
- * @upperbound: integer to investigate
+ * @upperbound: a square greater than or equal to
  * @factor: integer to investigate
  *
  * Return: an int value of 1 for prime or 0 for not prime
@@ -58,14 +57,12 @@ int test_factors(int target, int upperbound, int factor)
 }
 
 /**
- * find_multiples - traverse an array and set each multiple position of a
- * factor to 0
- * @array: the array to operate on
- * @factor: the factor to find multiples of
- * @multiple: the current multiple of factor
- * @stop: the limit in the array to carry the calculations upto
+ * find_multiples - determines if the target is a multiple of the factor
+ * @target: the number to test
+ * @factor: the base factor to find multiples of
+ * @multiple: the current multiple of the factor
  *
- * Return: void
+ * Return: int. -1 if factor doesn't divide target, and 0 if it does
  */
 int test_multiples(int target, int factor, int multiple)
 {
