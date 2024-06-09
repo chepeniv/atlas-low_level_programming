@@ -16,8 +16,10 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	int a = atoi(argv[1]);
-	int b = atoi(argv[2]);
+	char *argA = argv[1];
+	char *argB = argv[2];
+	int a = atoi(argA);
+	int b = atoi(argB);
 	int product = a * b;
 
 	printf("%d\n", product);
