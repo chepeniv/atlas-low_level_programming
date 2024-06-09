@@ -42,6 +42,12 @@ int main(int argc, char **argv)
 	return (0);
 }
 
+/**
+ * isnum - checks whether a string is an positive integer
+ * @word: string to examine
+ *
+ * Return: 0 if failing, 1 if passing
+ */
 int isnum(char *word)
 {
 	int i;
