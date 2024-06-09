@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 /**
- * main - a program that prints each argument passed to it per line
+ * main - output the product of the first argument with the second
  * @argc: number of arguments passed
- * @argv: array of pointers to string-arguments passed at runtime
+ * @argv: expecting integers
  *
  * Return: 0
  */
