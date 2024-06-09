@@ -3,7 +3,7 @@
 /**
  * main - a program that outputs its name to stdout
  * @argc: number of arguments passed
- * @argv: array of pointers to strings arguments passed 
+ * @argv: array of pointers to strings arguments passed
  *
  * Return: 0
  */
