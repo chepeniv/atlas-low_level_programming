@@ -57,7 +57,7 @@ int test_factors(int target, int upperbound, int factor)
 }
 
 /**
- * find_multiples - determines if the target is a multiple of the factor
+ * test_multiples - determines if the target is a multiple of the factor
  * @target: the number to test
  * @factor: the base factor to find multiples of
  * @multiple: the current multiple of the factor
