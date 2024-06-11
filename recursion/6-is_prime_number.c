@@ -1,7 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-
-int test_factors(int target, int upperbound, int factor);
 
 /**
  * _sqrt - calculate the natural square root of a number recursively
