@@ -3,15 +3,15 @@
 
 /**
  * create_array - creates an array initialized with a specified char
- * @size:
- * @c:
+ * @size: the size of the array
+ * @c: the char to fill the array with
  *
- * Return:
+ * Return: pointer to the constructed array upon success, otherwise NULL
  */
 char *create_array(unsigned int size, char c)
 {
 	char *c_string;
-	int i;
+	size_t i;
 
 	if (size == 0)
 		return (NULL);
