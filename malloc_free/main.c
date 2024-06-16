@@ -4,35 +4,30 @@
 
 int main(void)
 {
+	char *A = "first part...";
+	char *B = "second half";
+	char *C = "stringC";
+	char *D = "stringD";
 
-	char *strA = "first string";
-	char *strB = "this is the second string";
-	char *strC = "this is a very very very very very very long third string";
-	char *strD = "this is the fourth string";
+	char *AB = str_concat(A, B);
+	printf("%s\n", AB);
+	free(AB);
+	AB = NULL;
 
+	char *CD = str_concat(C, D);
+	printf("%s\n", CD);
+	free(CD);
+	CD = NULL;
+
+	return 0;
+}
+
+/*
 	char *dupA = _strdup(strA);
 	printf("%s\n", dupA);
 	free(dupA);
 	dupA = NULL;
 
-	char *dupB = _strdup(strB);
-	printf("%s\n", dupB);
-	free(dupB);
-	dupB = NULL;
-
-	char *dupC = _strdup(strC);
-	printf("%s\n", dupC);
-	free(dupC);
-	dupC = NULL;
-
-	char *dupD = _strdup(strD);
-	printf("%s\n", dupD);
-	free(dupD);
-	dupD = NULL;
-
-	return 0;
-}
-/*
 	c_string = create_array(2, '+');
 	printf("%s\n", c_string);
 	free(c_string);
