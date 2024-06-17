@@ -3,7 +3,7 @@
 
 /**
  * free_grid - free memory allocated for 2D array of integers
- * @grid: pointer to the matrix to deallocate
+ * @matrix: pointer to the matrix to deallocate
  * @height: matrix height
  *
  * Return: void
