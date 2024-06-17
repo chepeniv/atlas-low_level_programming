@@ -5,17 +5,23 @@
 int main(void)
 {
 	char *C = "stringC-";
-	char *D = "-stringD";
+	//char *D = "-stringD";
+
+	char *dupC = _strdup(C);
+	printf("%s\n", dupC);
+	free(dupC);
+	dupC = NULL;
+
+	return 0;
+}
+
+/*
 
 	char *CD = str_concat(C, D);
 	printf("%s\n", CD);
 	free(CD);
 	CD = NULL;
 
-	return 0;
-}
-
-/*
 	char *dupA = _strdup(strA);
 	printf("%s\n", dupA);
 	free(dupA);
