@@ -19,7 +19,7 @@ char *str_concat(char *A, char *B)
 	if (A == NULL && B == NULL)
 	{
 		AB = malloc(sizeof(char));
-		AB[0] = '\n';
+		*AB = "";
 	}
 
 	for (lenA = 0; A[lenA] != '\0'; lenA++);
