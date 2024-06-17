@@ -4,15 +4,8 @@
 
 int main(void)
 {
-	char *A = "first part-";
-	char *B = "-second half";
 	char *C = "stringC-";
 	char *D = "-stringD";
-
-	char *AB = str_concat(A, B);
-	printf("%s\n", AB);
-	free(AB);
-	AB = NULL;
 
 	char *CD = str_concat(C, D);
 	printf("%s\n", CD);

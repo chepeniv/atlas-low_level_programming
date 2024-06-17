@@ -14,14 +14,14 @@ char *str_concat(char *A, char *B)
 	size_t lenA, lenB, i;
 
 	if (A == NULL && B != NULL)
-		return str_concat(B, "");
+		return (str_concat(B, ""));
 	if (A != NULL && B == NULL)
-		return str_concat(A, "");
+		return (str_concat(A, ""));
 	if (A == NULL && B == NULL)
 	{
 		AB = malloc(sizeof(char));
 		AB[0] = '\0';
-		return AB;
+		return (AB);
 	}
 
 	for (lenA = 0; A[lenA] != '\0'; lenA++);
