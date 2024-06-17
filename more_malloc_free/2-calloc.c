@@ -11,7 +11,7 @@
 void *_calloc(unsigned int items, unsigned int size)
 {
 	unsigned int i;
-	char *marray;
+	int *marray;
 
 	if (items == 0 || size == 0)
 		return (NULL);
