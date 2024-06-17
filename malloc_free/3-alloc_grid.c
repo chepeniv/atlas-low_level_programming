@@ -6,7 +6,7 @@
  * @width: array width
  * @heigh: array height
  *
- * Return: upon success: return pointer to array; upon failure: return NULL
+ * Return: success - return pointer to array; failure - return NULL
  */
 int **alloc_grid(int width, int height)
 {
@@ -18,10 +18,15 @@ int **alloc_grid(int width, int height)
 		return (NULL);
 
 	matrix = malloc(height * sizeof(vector));
+	if (matrix == NULL)
+		return (NULL);
 
 	for (i = 0; i < height; i++)
 	{
 		vector = malloc(width * sizeof(int));
+		if (vector == NULL)
+			return (NULL);
+
 		for (j = 0; j < width; j++)
 			vector[j] = 0;
 		matrix[i] = vector;
