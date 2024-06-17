@@ -17,11 +17,11 @@ int **alloc_grid(int width, int height)
 	if (width <= 0 || height <= 0)
 		return (NULL);
 
-	matrix = malloc(height * sizeof(int *));
+	matrix = malloc((height - 1) * sizeof(int *));
 	if (matrix == NULL)
 		return (NULL);
 
-	vector = malloc(width * sizeof(int));
+	vector = malloc((width - 1) * sizeof(int));
 	if (vector == NULL)
 		return (NULL);
 
