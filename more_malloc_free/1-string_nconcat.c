@@ -19,8 +19,10 @@ char *string_nconcat(char *strA, char *strB, unsigned int n)
 	if (strA == NULL || strB == NULL)
 		return (handle_nulls(strA, strB, n));
 
-	for (lenA = 0; strA[lenA] != '\0'; lenA++) ;
-	for (lenB = 0; strB[lenB] != '\0'; lenB++) ;
+	for (lenA = 0; strA[lenA] != '\0'; lenA++)
+		;
+	for (lenB = 0; strB[lenB] != '\0'; lenB++)
+		;
 
 	if (n >= lenB)
 		n = lenB;
@@ -40,6 +42,15 @@ char *string_nconcat(char *strA, char *strB, unsigned int n)
 	return (strAnB);
 }
 
+/**
+ * handle_nulls - calls string_nconcat with empty strings instead of NULLLs or
+ * constructs an empty string itself
+ * @strA: prefix string
+ * @strB: suffix string
+ * @n: number of characters to take from the suffix string
+ *
+ * Return: success - pointer to the constructed string; failure - NULL
+ */
 char *handle_nulls(char *strA, char *strB, unsigned int n)
 {
 	char *nullcase;
