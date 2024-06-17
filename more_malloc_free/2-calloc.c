@@ -10,8 +10,8 @@
  */
 void *_calloc(unsigned int items, unsigned int size)
 {
-	int i;
-	void *marray;
+	unsigned int i;
+	int *marray;
 
 	if (items == 0 || size == 0)
 		return (NULL);
