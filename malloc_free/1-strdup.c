@@ -14,7 +14,7 @@ char *_strdup(char *original)
 	size_t i;
 
 	if (original == NULL)
-		return NULL;
+		return (NULL);
 
 	size = 0;
 	while (original[size] != '\0')
