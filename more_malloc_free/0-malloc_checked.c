@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 
-/*
+/**
  * malloc_checked - attempt to safely allocate memory
  * @b: number of bytes to allocate
  *
