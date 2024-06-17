@@ -17,7 +17,7 @@ char *str_concat(char *A, char *B)
 	if (A != NULL && B == NULL)
 		return str_concat(A, "");
 	if (A == NULL && B == NULL)
-		return NULL;
+		return str_concat("", "");
 
 	for (lenA = 0; A[lenA] != '\0'; lenA++);
 	for (lenB = 0; B[lenB] != '\0'; lenB++);
