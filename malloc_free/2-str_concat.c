@@ -12,6 +12,13 @@ char *str_concat(char *A, char *B)
 	char *AB;
 	size_t lenA, lenB, i;
 
+	if (A == NULL && B != NULL)
+		return str_concat(B, "");
+	if (A != NULL && B == NULL)
+		return str_concat(A, "");
+	if (A == NULL && B == NULL)
+		return NULL;
+
 	for (lenA = 0; A[lenA] != '\0'; lenA++);
 	for (lenB = 0; B[lenB] != '\0'; lenB++);
 
