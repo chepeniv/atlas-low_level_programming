@@ -4,13 +4,8 @@
 
 int main(void)
 {
-	char *C = "stringC-";
-	//char *D = "-stringD";
-
-	char *dupC = _strdup(C);
-	printf("%s\n", dupC);
-	free(dupC);
-	dupC = NULL;
+	int **M = alloc_grid(2, 2);
+	free(M);
 
 	return 0;
 }
