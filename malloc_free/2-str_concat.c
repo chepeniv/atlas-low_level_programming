@@ -10,37 +10,20 @@
 char *str_concat(char *A, char *B)
 {
 	char *AB;
-	size_t lenA;
-	size_t lenB;
-	size_t i;
+	size_t lenA, lenB, i;
 
-	lenA = 0;
-	while (A[lenA] != '\0')
-		lenA++;
-	lenA--;
+	for (lenA = 0; A[lenA] != '\0'; lenA++);
+	for (lenB = 0; B[lenB] != '\0'; lenB++);
 
-	lenB = 0;
-	while (B[lenB] != '\0')
-		lenB++;
-	lenB--;
-
-	AB = malloc(lenA + lenB - 1);
+	AB = malloc((lenA + lenB - 1) * sizeof(char));
 	if (AB == NULL)
 		return (NULL);
 
-	i = 0;
-	while (A[i] != '\0')
-	{
+	for (i = 0; A[i] != '\0'; i++)
 		AB[i] = A[i];
-		i++;
-	}
-
-	i--;
-	while (B[i] != '\0')
-	{
-		AB[i] = B[i];
-		i++;
-	}
+	for (i = 0; B[i] != '\0'; i++)
+		AB[i + lenA] = B[i];
+	AB[i + lenA] = '\0';
 
 	return (AB);
 }
