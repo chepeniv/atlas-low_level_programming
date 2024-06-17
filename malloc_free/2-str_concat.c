@@ -27,7 +27,7 @@ char *str_concat(char *A, char *B)
 	for (lenA = 0; A[lenA] != '\0'; lenA++);
 	for (lenB = 0; B[lenB] != '\0'; lenB++);
 
-	AB = malloc((lenA + lenB - 1) * sizeof(char));
+	AB = malloc((lenA + lenB + 1) * sizeof(char));
 	if (AB == NULL)
 		return (NULL);
 
