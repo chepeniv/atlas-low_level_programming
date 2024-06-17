@@ -4,8 +4,8 @@
 
 int main(void)
 {
-	int **M = alloc_grid(2, 2);
-	free(M);
+	int **M = alloc_grid(4, 4);
+	free_grid(M, 4);
 
 	return 0;
 }
