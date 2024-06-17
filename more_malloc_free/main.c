@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 		printf("%d, ", range[i]);
 	printf("\n");
 	free(range);
-
+/*
 	min = -5;
 	max = 5;
 	range = array_range(min, max);
@@ -47,6 +47,6 @@ int main(int argc, char **argv)
 		printf("%d, ", range[i]);
 	printf("\n");
 	free(range);
-
+*/
 	return 0;
 }
