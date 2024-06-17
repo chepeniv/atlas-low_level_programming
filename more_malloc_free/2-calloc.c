@@ -11,17 +11,19 @@
 void *_calloc(unsigned int items, unsigned int size)
 {
 	unsigned int i;
-	unsigned int *marray;
+	unsigned char *marray;
+	unsigned int length;
 
 	if (items == 0 || size == 0)
 		return (NULL);
 
-	marray = malloc(items * size);
+	length = items * size;
+	marray = malloc(length);
 	if (marray == NULL)
 		return (NULL);
 
-	for (i = 0; i < items; i++)
-		marray[i] = 0;
+	for (i = 0; i < length; i++)
+		marray[i] = '\0';
 
 	return (marray);
 }
