@@ -3,12 +3,8 @@
 #include <stdlib.h>
 
 /**
- * init_dog - takes a dog struct and initializes it with the
- * given parameters
- * @d: the dog struct to modify
- * @name: dogs names
- * @age: dogs age
- * @owner: dogs owner
+ * print_dog - takes a dog struct and prints-out its contents
+ * @d: the dog struct to reference
  *
  * Return: void
  */
