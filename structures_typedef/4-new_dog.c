@@ -5,12 +5,12 @@
 char *_strdup(char *original);
 
 /**
- * print_dog - takes a dog struct and prints-out its contents
- * @name: the dog struct to reference
- * @age: the dog struct to reference
- * @owner: the dog struct to reference
+ * new_dog - create and return a dog struct
+ * @name: name for the dog
+ * @age: age of the dog
+ * @owner: owner of the dog
  *
- * Return: dog_t
+ * Return: success - dog_t ; failure - NULL
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
@@ -59,7 +59,6 @@ char *_strdup(char *original)
 
 	for (i = 0; i < size; i++)
 		duplicate[i] = original[i];
-	/*duplicate[size] = '\0';*/
 
 	return (duplicate);
 }
