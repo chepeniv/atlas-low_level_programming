@@ -1,4 +1,4 @@
-project : structures_typedef
+project : function_pointers
 
 global variables not allowed\
 no more than five functions per file\
