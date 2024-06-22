@@ -30,7 +30,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	d->owner = dup_owner;
 	d->age = age;
 
-	return d;
+	return (d);
 }
 
 /**
