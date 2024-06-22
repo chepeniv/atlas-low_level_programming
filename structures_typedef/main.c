@@ -5,7 +5,6 @@
 
 int main(void)
 {
-	typedef struct dog dog;
 	dog adog;
 	char *name ="thomas";
 	char *owner ="eric";
