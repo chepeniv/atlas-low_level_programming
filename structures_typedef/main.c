@@ -11,10 +11,7 @@ int main(void)
 	float age = 2.4;
 
 	init_dog(&adog, name, age, owner);
-
-	printf("name: %s\n", adog.name);
-	printf("age: %f\n", adog.age);
-	printf("owner: %s\n", adog.owner);
+	print_dog(&adog);
 
 	return 0;
 }
