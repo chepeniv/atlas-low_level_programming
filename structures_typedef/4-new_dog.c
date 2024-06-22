@@ -23,8 +23,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (dup_name == NULL)
 		return (NULL);
 
-	d->name = name;
-	d->owner = owner;
+	d->name = dup_name;
+	d->owner = dup_owner;
 	d->age = age;
 
 	return d;
