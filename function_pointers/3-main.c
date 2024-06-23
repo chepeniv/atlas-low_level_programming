@@ -3,7 +3,7 @@
 #include <string.h>
 #include "3-calc.h"
 
-/* *
+/**
  * main - calculator program
  * @argc: number of parameters passed
  * @argv: calculation to carry out
