@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "3-calc.h"
 
 /* only the main func allowed
@@ -20,12 +21,13 @@ int main(int argc, char **argv)
 		return (98);
 	}
 	if
-		(
+		((
 		*op != '+' &&
 		*op != '-' &&
 		*op != '*' &&
 		*op != '/' &&
-		*op != '%'
+		*op != '%') ||
+		strlen(argv[2]) != 1
 		)
 	{
 		printf("Error\n");
