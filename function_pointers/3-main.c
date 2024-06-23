@@ -3,11 +3,12 @@
 #include <string.h>
 #include "3-calc.h"
 
-/* only the main func allowed
- * no direct calls to any of the op_functions
- * use atoi on ints
- * no loops
- * no more than 3 if-statements
+/* *
+ * main - calculator program
+ * @argc: number of parameters passed
+ * @argv: calculation to carry out
+ *
+ * Return: int exit code
  */
 int main(int argc, char **argv)
 {
@@ -20,25 +21,13 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		return (98);
 	}
-	if
-		((
-		*op != '+' &&
-		*op != '-' &&
-		*op != '*' &&
-		*op != '/' &&
-		*op != '%') ||
-		strlen(argv[2]) != 1
-		)
+	if ((*op != '+' && *op != '-' && *op != '*' && *op != '/' && *op != '%') ||
+		strlen(argv[2]) != 1)
 	{
 		printf("Error\n");
 		return (99);
 	}
-	if ((
-		*op == '/' ||
-		*op == '%'
-		) &&
-		*argv[3] == '0'
-		)
+	if ((*op == '/' || *op == '%') && *argv[3] == '0')
 	{
 		printf("Error\n");
 		return (100);
