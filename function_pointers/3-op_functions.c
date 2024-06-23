@@ -14,7 +14,7 @@ int op_add(int a, int b)
 	return (a + b);
 }
 /*
- * op_add - returns the difference of the given params
+ * op_sub - returns the difference of the given params
  * @a: 1st operand
  * @b: 2nd operand
  *
@@ -26,7 +26,7 @@ int op_sub(int a, int b)
 }
 
 /*
- * op_add - returns the product of the given params
+ * op_mul - returns the product of the given params
  * @a: 1st operand
  * @b: 2nd operand
  *
@@ -38,7 +38,7 @@ int op_mul(int a, int b)
 }
 
 /*
- * op_add - returns the division of the first param with the second
+ * op_div - returns the division of the first param with the second
  * @a: 1st operand
  * @b: 2nd operand
  *
