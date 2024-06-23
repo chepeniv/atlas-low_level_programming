@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 
 	if (argc != 4)
 	{
-		printf("Error\nIncorrect number of arguments\n");
+		printf("Error\n");
 		return (98);
 	}
 	if
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		*op != '%'
 		)
 	{
-		printf("Error\nImproper operator passed\n");
+		printf("Error\n");
 		return (99);
 	}
 	if ((
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		*argv[3] == '0'
 		)
 	{
-		printf("Error\nCannot divide by 0\n");
+		printf("Error\n");
 		return (100);
 	}
 
