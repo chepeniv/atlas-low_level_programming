@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "3-calc.h"
 
-/*
+/**
  * op_add - returns the sum of the given params
  * @a: 1st operand
  * @b: 2nd operand
@@ -13,7 +13,8 @@ int op_add(int a, int b)
 {
 	return (a + b);
 }
-/*
+
+/**
  * op_sub - returns the difference of the given params
  * @a: 1st operand
  * @b: 2nd operand
@@ -25,7 +26,7 @@ int op_sub(int a, int b)
 	return (a - b);
 }
 
-/*
+/**
  * op_mul - returns the product of the given params
  * @a: 1st operand
  * @b: 2nd operand
@@ -37,7 +38,7 @@ int op_mul(int a, int b)
 	return (a * b);
 }
 
-/*
+/**
  * op_div - returns the division of the first param with the second
  * @a: 1st operand
  * @b: 2nd operand
@@ -49,7 +50,7 @@ int op_div(int a, int b)
 	return (a / b);
 }
 
-/*
+/**
  * op_mod - returns the modulus of the given params
  * @a: 1st operand
  * @b: 2nd operand
