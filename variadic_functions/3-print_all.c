@@ -14,7 +14,7 @@ void print_all(const char * const format, ...)
 	unsigned int i = 0;
 	char * astr;
 	va_list arglist;
-	int length = 0;
+	unsigned int length = 0;
 	int next = 0;
 
 	va_start(arglist, format);
