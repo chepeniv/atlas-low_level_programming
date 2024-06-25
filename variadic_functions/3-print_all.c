@@ -19,7 +19,10 @@ void print_all(const char * const format, ...)
 	va_start(arglist, format);
 
 	while (format == NULL)
+	{
+		printf("\n");
 		return;
+	}
 
 	i = 0;
 

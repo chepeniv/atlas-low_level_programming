@@ -9,6 +9,6 @@ int main(void)
 	//print_strings(", ", 2, "Jay", "Django");
 	print_all("ceis", 'B', 3, "stSchool");
 	print_all(NULL);
-	printf("executed null-case");
+	printf("executed null-case\n");
 	return 0;
 }
