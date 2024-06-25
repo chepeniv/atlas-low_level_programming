@@ -15,7 +15,8 @@ void print_all(const char * const format, ...)
 {
 	va_list arglist;
 
-	while (format == NULL) {
+	while (format == NULL)
+	{
 		printf("\n");
 		return;
 	}
@@ -40,8 +41,10 @@ void process_print(const char * const format, va_list arglist)
 	char *astr;
 
 	i = 0;
-	while (format[i] != '\0') {
-		switch (format[i]) {
+	while (format[i] != '\0')
+	{
+		switch (format[i])
+		{
 			case 'c':
 				printf("%c", (char) va_arg(arglist, int));
 				next = 1;
@@ -63,7 +66,8 @@ void process_print(const char * const format, va_list arglist)
 				break;
 		}
 		i++;
-		if (format[i] != '\0' && next) {
+		if (format[i] != '\0' && next)
+		{
 			printf(", ");
 			next = 0;
 		}
