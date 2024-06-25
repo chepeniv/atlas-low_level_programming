@@ -14,16 +14,16 @@ void print_all(const char * const format, ...)
 	unsigned int i = 0;
 	char * astr;
 	va_list arglist;
-	unsigned int length = 0;
 	int next = 0;
 
 	va_start(arglist, format);
 
-	while (format[i] != '\0')
-		length = i++;
+	while (format == NULL)
+		return;
 
 	i = 0;
-	while (i <= length)
+
+	while (format[i] != '\0')
 	{
 		switch (format[i])
 		{
@@ -52,7 +52,8 @@ void print_all(const char * const format, ...)
 		}
 
 		i++;
-		if (i <= length && next)
+
+		if (format[i] != '\0' && next)
 		{
 			printf(", ");
 			next = 0;
