@@ -3,9 +3,9 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers - sums all of the given arguments after the first
- * @separator: the number of arguments to sum
- * @n: the number of arguments to sum
+ * print_strings - printout each given string separated by a given delimiter
+ * @separator: the delimiter to use
+ * @n: the number of strings to proccess
  *
  * Return: void
  */
@@ -32,7 +32,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 			current = "(nil)";
 		printf("%s%s", current, separator);
 	}
-	printf("%s\n", (char *) va_arg(arglist, void *));
+	current = (char *) va_arg(arglist, void *);
+	if (current == NULL)
+		current = "(nil)";
+	printf("%s\n", current);
 
 	va_end(arglist);
 }
