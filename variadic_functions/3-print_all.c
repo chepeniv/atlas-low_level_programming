@@ -8,12 +8,6 @@
  *
  * Return: void
  */
-// process only "cifs" ignore all other chars
-// if an "s" is NULL print "(nil)"
-// not allowed : for, goto, ternary, else, do-while
-// maximum two whiles
-// maximum two ifs
-// maximum nine variable
 void print_all(const char * const format, ...)
 {
 	unsigned int i = 0;
