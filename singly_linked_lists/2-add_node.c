@@ -29,7 +29,7 @@ list_t *add_node(list_t **head, const char *str)
 {
 	list_t *newHead;
 	char *newStr;
-	int len = _strlen(newStr);
+	int len = _strlen(str);
 
 	newHead = malloc(sizeof(list_t));
 	if (newHead == NULL)
