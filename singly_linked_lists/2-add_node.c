@@ -9,7 +9,7 @@
  *
  * Return: length of string
  */
-int _strlen(char *str)
+int _strlen(const char *str)
 {
 	int len = 0;
 
