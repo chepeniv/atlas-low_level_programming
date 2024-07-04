@@ -32,7 +32,15 @@ list_t *add_node(list_t **head, const char *str)
 	int len = _strlen(newStr);
 
 	if (newHead == NULL)
+	{
+		free(newStr);
 		return (NULL);
+	}
+	if (newStr == NULL)
+	{
+		free(newHead);
+		return (NULL);
+	}
 
 	newHead->str = newStr;
 	newHead->len = len;
