@@ -4,6 +4,21 @@
 #include <string.h>
 
 /**
+ * _strlen - measures the total characters in a string
+ * @str: string to measure
+ *
+ * Return: length of string
+ */
+int _strlen(const char *str)
+{
+	int len = 0;
+
+	while (str[len] != '\0')
+		++len;
+	return (len);
+}
+
+/**
  * add_node_end - adds a new node to the tailend of a linked list
  * @head: a pointer to the head node
  * @str: new tail node's data
