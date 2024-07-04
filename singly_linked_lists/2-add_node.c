@@ -4,6 +4,22 @@
 #include <string.h>
 
 /**
+ * _strlen - measures the total characters in a string
+ * @str: string to measure
+ *
+ * Return: length of string
+ */
+int _strlen(char *str)
+{
+	int len;
+	int pos = 0;
+
+	while (str[pos] != '\0')
+		++pos;
+	return (++pos);
+}
+
+/**
  * add_node - adds a new head to a linked list
  * @head: a pointer to the old head
  * @str: new head node's data
@@ -14,7 +30,7 @@ list_t *add_node(list_t **head, const char *str)
 {
 	list_t *newHead = malloc(sizeof(list_t));
 	char *newStr = strdup(str);
-	int len = strlen(newStr);
+	int len = _strlen(newStr);
 
 	newHead->str = newStr;
 	newHead->len = len;
