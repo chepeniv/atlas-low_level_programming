@@ -1,6 +1,5 @@
-#include "main.h"
+#include "lists.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * print_list - printout a data field for each element in linked list
