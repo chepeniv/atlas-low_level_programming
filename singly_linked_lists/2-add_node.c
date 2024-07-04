@@ -1,5 +1,7 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * add_node - adds a new head to a linked list
@@ -14,7 +16,7 @@ list_t *add_node(list_t **head, const char *str)
 	char *newStr = strdup(str);
 	int strLen = sizeof(*str)/sizeof(char);
 
-	newHead->str = newString;
+	newHead->str = newStr;
 	newHead->len = strLen;
 
 	if (head == NULL)
@@ -22,5 +24,5 @@ list_t *add_node(list_t **head, const char *str)
 	else
 		newHead->next = *head;
 
-	return (newNode);
+	return (newHead);
 }
