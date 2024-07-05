@@ -3,7 +3,7 @@
 
 /**
  * sum_listint - returns the sum of a list node's data
- * @head: a pointer to current node
+ * @current: a pointer to current node
  *
  * Return: sum of all data
  */
