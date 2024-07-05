@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 /**
- * free_listint - destroys a linked list
- * @head: a pointer to the head node
+ * free_listint2 - destroys a linked list and sets head to NULL
+ * @head: a double pointer to the head node
  *
  * Return: void
  */
