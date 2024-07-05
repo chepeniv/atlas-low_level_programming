@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned int listint_len(const listint_t *h);
-
 /**
  * delete_nodeint_at_index - delete the node at index in list
  * @head: double pointer to first item in list
@@ -50,7 +48,7 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
  *
  * Return: the number of nodes
  */
-unsigned int listint_len(const listint_t *h)
+size_t listint_len(const listint_t *h)
 {
 	int total = 0;
 	const listint_t *current = h;
