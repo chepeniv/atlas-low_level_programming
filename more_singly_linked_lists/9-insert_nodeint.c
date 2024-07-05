@@ -4,6 +4,7 @@
 
 /**
  * insert_nodeint_at_index - insert a new node in list at index
+ * @head: double pointer to first item in list
  * @index: position in list
  * @value: data for new node
  *
