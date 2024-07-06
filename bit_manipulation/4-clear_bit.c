@@ -3,7 +3,7 @@
 ulint power_of_two(ulint power);
 
 /**
- * set_bit - set value of bit to one at given index
+ * clear_bit - set value of bit to 0 at given index
  * @index: position to access
  * @n: data to modify
  *
