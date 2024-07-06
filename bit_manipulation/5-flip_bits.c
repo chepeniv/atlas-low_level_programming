@@ -15,15 +15,14 @@ unsigned int flip_bits(unsigned long int a, unsigned long int b)
 {
 	unsigned int result;
 	unsigned int flips = 0;
-	unsigned int index = 63;
+	unsigned int index = 64;
 
 	result = a ^ b;
 
 	while (index)
-	{
-		flips += get_bit(result, index);
-		--index;
-	}
+		flips += get_bit(result, index--);
+
+	flips += get_bit(result, 0);
 
 	return (flips);
 }
@@ -34,7 +33,7 @@ int get_bit(unsigned long int n, unsigned int index)
 	ulint pot;
 
 	if (index > 64)
-		return (-1);
+		return (0);
 
 	pot = power_of_two(index);
 	result = n & pot;
