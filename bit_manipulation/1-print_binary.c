@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <limits.h>
 
-typedef unsigned long int ulint;
-
 ulint power_of_two(ulint power);
 
 /**
