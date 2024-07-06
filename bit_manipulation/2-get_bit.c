@@ -7,6 +7,7 @@ ulint power_of_two(ulint power);
 /**
  * get_bit - return value of bit at position
  * @index: position to access
+ * @n: data to examine
  *
  * Return: value of bit, or -1 upon failure
  */
