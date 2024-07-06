@@ -13,6 +13,9 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int pos = 0;
 	unsigned int sum = 0;
 
+	if (b == NULL)
+		return (0);
+
 	while (b[len] != '\0')
 	{
 		if (b[len] != '0' && b[len] != '1')
@@ -26,5 +29,6 @@ unsigned int binary_to_uint(const char *b)
 			sum += 1 << (len - pos - 1);
 		pos++;
 	}
+
 	return (sum);
 }
