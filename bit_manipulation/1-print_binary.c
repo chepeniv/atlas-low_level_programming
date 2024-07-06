@@ -22,17 +22,23 @@ void print_binary(unsigned long int n)
 		_putchar(n + '0');
 		return;
 	}
-
-	while (sum < n)
+	else if (n == ULONG_MAX)
 	{
-		power++;
+		power = 63;
 		sum = power_of_two(power);
 	}
-
-	if (sum > n)
+	else
 	{
-		power--;
-		sum = power_of_two(power);
+		while (sum < n)
+		{
+			power++;
+			sum = power_of_two(power);
+		}
+		if (sum > n)
+		{
+			power--;
+			sum = power_of_two(power);
+		}
 	}
 
 	_putchar('1');
