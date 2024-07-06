@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * print_binary - output the binary representation of a given int
@@ -17,6 +18,8 @@ void print_binary(unsigned long int n)
 		_putchar(n + '0');
 		return;
 	}
+	else if (n == ULONG_MAX)
+		sum = n;
 
 	while (sum < n)
 	{
