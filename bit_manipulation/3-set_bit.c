@@ -18,7 +18,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 
 	copy = *n;
 	pot = power_of_two(index);
-	*n = copy & pot;
+	*n = copy | pot;
 
 	return (1);
 }
