@@ -20,8 +20,8 @@ void print_binary(unsigned long int n)
 
 	while (sum < n)
 	{
-		sum = 1 << power;
 		power++;
+		sum = 1 << power;
 	}
 
 	if (sum > n)
@@ -32,8 +32,9 @@ void print_binary(unsigned long int n)
 
 	_putchar('1');
 	power--;
-	while (power > -1)
+	while (power >= 0)
 	{
+		sum += 1 << power;
 		if (sum > n)
 		{
 			_putchar('0');
@@ -42,6 +43,5 @@ void print_binary(unsigned long int n)
 		else
 			_putchar('1');
 		power--;
-		sum += 1 << power;
 	}
 }
