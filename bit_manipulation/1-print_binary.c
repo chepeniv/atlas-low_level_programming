@@ -12,58 +12,47 @@ ulint power_of_two(ulint power);
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int sum = 0;
-	long int power = 0;
+	unsigned long int sum = 0, power =0;
+	const unsigned long int limit = 64;
+	const unsigned long int one = 1;
 
 	if (n == 1 || n == 0)
 	{
 		_putchar(n + '0');
 		return;
 	}
-	else if (n == ULONG_MAX)
+
+	if (n == ULONG_MAX)
 	{
-		power = 63;
-		sum = power_of_two(power);
+		power = limit - one;
+		sum = one << (power);
 	}
 	else
 	{
 		while (sum < n)
 		{
 			power++;
-			sum = power_of_two(power);
+			sum = one << power;
 		}
 		if (sum > n)
 		{
 			power--;
-			sum = power_of_two(power);
+			sum = one << power;
 		}
 	}
 
 	_putchar('1');
 	power--;
-	while (power > -1)
+	while (power + one > 0)
 	{
-		sum +=  power_of_two(power);
+		sum += one << power;
 		if (sum > n)
 		{
 			_putchar('0');
-			sum -= power_of_two(power);
+			sum -=  one << power;
 		}
 		else
 			_putchar('1');
 		power--;
 	}
-}
-
-ulint power_of_two(ulint power)
-{
-	ulint result = 1;
-
-	while (power)
-	{
-		result *= 2;
-		--power;
-	}
-
-	return (result);
 }
