@@ -6,11 +6,12 @@ ulint power_of_two(ulint power);
 long int get_bit64(unsigned long int n, unsigned long int index);
 
 /**
- * get_bit - return value of bit at position
- * @index: position to access
- * @n: data to examine
+ * flip_bits - determines the number of bits that need to be flipped
+ * in order change one data sequence into another
+ * @a: first data sequence
+ * @b: second data sequence
  *
- * Return: value of bit, or -1 upon failure
+ * Return: minimum number of bits needed to flip
  */
 unsigned int flip_bits(unsigned long int a, unsigned long int b)
 {
@@ -28,6 +29,14 @@ unsigned int flip_bits(unsigned long int a, unsigned long int b)
 	return (flips);
 }
 
+
+/**
+ * get_bit64 - returns the value of a bit at a given position
+ * @n: data sequence
+ * @index: position in n to examine
+ *
+ * Return: value at 'index' position in n
+ */
 long int get_bit64(unsigned long int n, unsigned long int index)
 {
 	long int result;

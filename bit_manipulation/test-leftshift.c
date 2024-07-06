@@ -5,10 +5,14 @@
 void test_ls()
 {
 	unsigned long int pot = 0; //power of two
-	long int exp = 0;
+	unsigned long int exp = 0;
+	unsigned long int limit = 64;
+	unsigned long int one = 1;
 
-	while (exp < 64)
+	while (exp < limit)
 	{
+		pot = one << exp;
+		printf("exp = %lu; pot = %lu\n", exp, pot);
 		pot = 1 << exp;
 		printf("exp = %lu; pot = %lu\n", exp, pot);
 		exp++;
