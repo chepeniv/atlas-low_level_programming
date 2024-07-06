@@ -12,7 +12,7 @@ ulint power_of_two(ulint power);
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int sum = 0, power =0;
+	unsigned long int sum = 0, power = 0;
 	const unsigned long int limit = 64;
 	const unsigned long int one = 1;
 
