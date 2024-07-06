@@ -5,10 +5,10 @@
 ulint power_of_two(ulint power);
 
 /**
- * print_binary - output the binary representation of a given int
- * @n: number to translate
+ * get_bit - return value of bit at position
+ * @index: position to access
  *
- * Return: void
+ * Return: value of bit, or -1 upon failure
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
