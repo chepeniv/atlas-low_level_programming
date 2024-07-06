@@ -3,6 +3,7 @@
 #include <limits.h>
 
 ulint power_of_two(ulint power);
+long int get_bit64(unsigned long int n, unsigned long int index);
 
 /**
  * get_bit - return value of bit at position
@@ -13,23 +14,24 @@ ulint power_of_two(ulint power);
  */
 unsigned int flip_bits(unsigned long int a, unsigned long int b)
 {
-	unsigned int result;
-	unsigned int flips = 0;
-	unsigned int index = 64;
+	unsigned long int result;
+	unsigned long int flips = 0;
+	unsigned long int index = 64;
 
 	result = a ^ b;
+	printf("xor result: %lu\n", result);
 
 	while (index)
-		flips += get_bit(result, index--);
+		flips += get_bit64(result, index--);
 
-	flips += get_bit(result, 0);
+	flips += get_bit64(result, 0);
 
 	return (flips);
 }
 
-int get_bit(unsigned long int n, unsigned int index)
+long int get_bit64(unsigned long int n, unsigned long int index)
 {
-	int result;
+	long int result;
 	ulint pot;
 
 	if (index > 64)
