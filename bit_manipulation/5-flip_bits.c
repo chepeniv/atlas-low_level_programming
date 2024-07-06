@@ -19,7 +19,6 @@ unsigned int flip_bits(unsigned long int a, unsigned long int b)
 	unsigned long int index = 64;
 
 	result = a ^ b;
-	printf("xor result: %lu\n", result);
 
 	while (index)
 		flips += get_bit64(result, index--);
