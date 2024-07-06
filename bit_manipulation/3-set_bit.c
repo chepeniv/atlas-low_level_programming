@@ -9,7 +9,7 @@ ulint power_of_two(ulint power);
  *
  * Return: value of bit, or -1 upon failure
  */
-int set_bit(unsigned long int *n, unsigned int index);
+int set_bit(unsigned long int *n, unsigned int index)
 {
 	ulint copy, pot;
 
