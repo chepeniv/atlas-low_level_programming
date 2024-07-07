@@ -30,10 +30,6 @@ int create_file(const char *filename, char *text_content)
 		length = strlen(text_content);
 		success = write(filename, text_content, length);
 	}
-	else
-	{
-	// create empty file // maybe delete elseblock ?
-	}
 
 	close(desc);
 
