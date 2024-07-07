@@ -28,7 +28,7 @@ int create_file(const char *filename, char *text_content)
 	if (text_content != NULL)
 	{
 		length = strlen(text_content);
-		success = write(filename, text_content, length);
+		success = write(desc, text_content, length);
 	}
 
 	close(desc);
