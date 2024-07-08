@@ -6,6 +6,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+void copy_contents(const char *sourcef, const char *targetf);
+
 int main(int argc, char **argv)
 {
 	if (argc != 3)
@@ -27,7 +29,7 @@ int main(int argc, char **argv)
  *
  * Return: 1 success, -1 failure
  */
-int copy_contents(const char *sourcef, const char *targetf)
+void copy_contents(const char *sourcef, const char *targetf)
 {
 	int descSource, descTarget;
 	int error = 0, bsize = 1024, readlen = 0;
