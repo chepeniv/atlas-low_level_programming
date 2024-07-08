@@ -8,6 +8,14 @@
 
 int main(int argc, char **argv)
 {
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		return (97);
+	}
+
+	copy_contents(argv[1], argv[2]);
+
 	return (0);
 }
 
@@ -21,52 +29,42 @@ int main(int argc, char **argv)
  */
 int copy_contents(const char *sourcef, const char *targetf)
 {
+	int descSource, descTarget;
+	int error = 0, bsize = 1024, readlen = 0;
+	char *buffer;
 
-	/*
-	 * allowed functions: printf, dprintf, putchar, puts, malloc,
-	 * free, exit, open, read, write, close
-	 *
-	 * can only read 1024bytes at a time
-	 *
-	 * if target exist truncate it and don't change permissions
-	 *
-	 * if targetf needs to be created set permissions to rw-rw-r--
-	 */
-	int length;
-	int desc;
-	int success = 1;
-
-	if (filename == NULL)
-		return (-1);
-
-	desc = open(filename, O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-	if (desc < 0)
-		return (-1);
-
-	if (text_content != NULL)
+	descSource = open(sourcef, O_RDONLY);
+	if (sourcef == NULL || descSource < 0)
 	{
-		length = strlen(text_content);
-		success = write(desc, text_content, length);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", sourcef);
+		exit(98);
 	}
 
-	close(desc);
+	descTarget = open(
+			targetf,
+			O_RDWR | O_CREAT | O_TRUNC,
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	if (descTarget < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", targetf);
+		exit(99);
+	}
 
-	if (success < 0)
-		return (-1);
-	/* exit codes (print to stderr):
-	 *
-	 * incorrect num of args :
-	 * 97 "Usage: cp file_from file_to\n"
-	 *
-	 * source doesn't exist :
-	 * 98 "Error: Can't read from file NAME_OF_THE_FILE\n"
-	 *
-	 * cannot create or write to target :
-	 * 99 "Error: Can't write to NAME_OF_THE_FILE\n"
-	 *
-	 * cannot close descriptor :
-	 * 100 "Error: Can't close fd FD_VALUE\n"
-	 */
+	buffer = malloc(sizeof(char) * bsize);
+	readlen = read(descSource, buffer, bsize);
+	error = write(descTarget, buffer, readlen);
+	free(buffer);
 
-	return (1);
+	error = close(descSource);
+	if (error < 0)
+	{
+		dprintf(STDERR_FILENO,  "Error: Can't close fd %d\n", descSource);
+		exit(100);
+	}
+	error = close(descTarget);
+	if (error < 0)
+	{
+		dprintf(STDERR_FILENO,  "Error: Can't close fd %d\n", descTarget);
+		exit(100);
+	}
 }
