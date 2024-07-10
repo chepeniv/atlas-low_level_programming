@@ -11,10 +11,10 @@ void test_ls()
 
 	while (exp < limit)
 	{
-		pot = one << exp;
-		printf("exp = %lu; pot = %lu\n", exp, pot);
-		//pot = 1 << exp;
+		//pot = one << exp;
 		//printf("exp = %lu; pot = %lu\n", exp, pot);
+		pot = 1 << exp;
+		printf("exp = %lu; pot = %lu\n", exp, pot);
 		exp++;
 	}
 }
