@@ -8,6 +8,13 @@
 
 void copy_contents(const char *sourcef, const char *targetf);
 
+/**
+ * main -
+ * @argc:
+ * @argv:
+ *
+ * Return: 0 on success, and nonzero values otherwise
+ */
 int main(int argc, char **argv)
 {
 	if (argc != 3)
@@ -25,9 +32,8 @@ int main(int argc, char **argv)
  * copy_contents -
  * @sourcef:
  * @targetf:
- * usage: cp filefrom fileto
  *
- * Return: 1 success, -1 failure
+ * Return: void
  */
 void copy_contents(const char *sourcef, const char *targetf)
 {
@@ -54,7 +60,18 @@ void copy_contents(const char *sourcef, const char *targetf)
 
 	buffer = malloc(sizeof(char) * bsize);
 	readlen = read(descSource, buffer, bsize);
+	if (readlen < 0)
+	{
+		free(buffer);
+		exit(-1);
+	}
+
 	error = write(descTarget, buffer, readlen);
+	if (error < 0)
+	{
+		free(buffer);
+		exit(-1);
+	}
 	free(buffer);
 
 	error = close(descSource);
