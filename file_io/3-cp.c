@@ -9,9 +9,9 @@
 void copy_contents(const char *sourcef, const char *targetf);
 
 /**
- * main -
- * @argc:
- * @argv:
+ * main - passes along its arguments to a copy_contents call
+ * @argc: number of arguments
+ * @argv: argument pointer array
  *
  * Return: 0 on success, and nonzero values otherwise
  */
@@ -29,9 +29,10 @@ int main(int argc, char **argv)
 }
 
 /**
- * copy_contents -
- * @sourcef:
- * @targetf:
+ * copy_contents - takes the content from one file and duplicates them onto
+ * another
+ * @sourcef: source file to read from
+ * @targetf: source file to write to
  *
  * Return: void
  */
