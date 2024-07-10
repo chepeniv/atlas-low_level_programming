@@ -61,19 +61,10 @@ void copy_contents(const char *sourcef, const char *targetf)
 
 	buffer = malloc(sizeof(char) * bsize);
 	readlen = read(descSource, buffer, bsize);
-	if (readlen < 0)
-	{
-		free(buffer);
-		exit(-1);
-	}
-
 	error = write(descTarget, buffer, readlen);
-	if (error < 0)
-	{
-		free(buffer);
-		exit(-1);
-	}
 	free(buffer);
+	if (readlen < 0 || error < 0)
+		exit(-1);
 
 	error = close(descSource);
 	if (error < 0)
