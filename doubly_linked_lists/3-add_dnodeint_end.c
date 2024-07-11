@@ -3,6 +3,7 @@
 /**
  * add_dnodeint_end - adds a new tail node to a given doubly linked list
  * @head: a double pointer to the head of the list
+ * @n: data for new tailend node
  *
  * Return: address of newly appended node, or NUll upon failure
  */
