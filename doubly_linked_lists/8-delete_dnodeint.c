@@ -24,7 +24,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int pos)
 		++i;
 	}
 
-	if (i != pos)
+	if (i != pos || current == NULL)
 		return (-1);
 
 	if (before != NULL)
