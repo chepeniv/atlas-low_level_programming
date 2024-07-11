@@ -3,6 +3,7 @@
 /**
  * add_dnodeint - adds a new head node to a given doubly linked list
  * @head: a double pointer to the current head of the list
+ * @n: new head node data
  *
  * Return: address of new head node, or NULL upon failure
  */
