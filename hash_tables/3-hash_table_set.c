@@ -18,10 +18,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	size = ht->size;
-	index = key_index(key, size);
+	index = key_index((unsigned) key, size);
 
 	valdup = strdup(value);
-	keydup = strdup(keydup);
+	keydup = strdup(key);
 
 	array = ht->array;
 	pos = array + index;
