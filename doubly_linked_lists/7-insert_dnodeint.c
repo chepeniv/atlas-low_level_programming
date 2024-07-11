@@ -5,16 +5,27 @@
  * a doubly linked list
  * @head: pointer to head of the list
  * @index: node to find
+ * @n: node to find
  *
  * Return: address of node if found, NULL otherwise
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int index, int n)
 {
 	unsigned int i = 0;
+	int m = (int) n;
 	dlistint_t *before = NULL, *new = NULL, *after = NULL;
 
-	if (*head == NULL)
+	new = malloc(sizeof(dlistint_t));
+	if (new == NULL)
 		return (NULL);
+	new->n = m;
+
+	if (*head == NULL)
+	{
+		new->prev = NULL;
+		new->next = NULL;
+		return (new);
+	}
 
 	after = *head;
 	while (after != NULL && i < index)
@@ -26,11 +37,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int index, int 
 
 	if (i != index - 1)
 		return (NULL);
-
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
 
 	before->next = new;
 	new->prev = before;
