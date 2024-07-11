@@ -30,7 +30,10 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int pos)
 	if (before != NULL)
 		before->next = after;
 	else
+	{
+		after = current->next;
 		*head = after;
+	}
 	if (after != NULL)
 		after->prev = before;
 
