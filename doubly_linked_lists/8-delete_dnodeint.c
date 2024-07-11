@@ -20,7 +20,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int pos)
 	{
 		before = current;
 		current = current->next;
-		after = current->next;
+		if (current->next != NULL)
+			after = current->next;
 		++i;
 	}
 
