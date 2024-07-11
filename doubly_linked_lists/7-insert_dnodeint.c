@@ -24,6 +24,9 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int index, int 
 		++i;
 	}
 
+	if (i != index - 1)
+		return (NULL);
+
 	new = malloc(sizeof(dlistint_t));
 	if (new == NULL)
 		return (NULL);
