@@ -11,23 +11,24 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index, size;
-	char *valdup;
-	hash_node_t **array, *pos, *new;
+	unsigned char *valdup, *keydup;
+	hash_node_t **array, **pos, *new;
 
 	if (key == NULL)
 		return (0);
 
 	size = ht->size;
-	index = key_index(*key, size);
+	index = key_index(key, size);
 
 	valdup = strdup(value);
+	keydup = strdup(keydup);
 
 	array = ht->array;
-	pos = array + size;
+	pos = array + index;
 	new = malloc(sizeof(hash_node_t));
 	if (new == NULL)
 		return (0);
-	new->key = key;
+	new->key = keydup;
 	new->value = valdup;
 	new->next = NULL;
 	*pos = new;
