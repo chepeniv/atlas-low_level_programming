@@ -1,15 +1,19 @@
 #include "lists.h"
 
 /**
- * get_dnodeint_at_index - finds the address of a node at a given index within
- * a doubly linked list
+ * insert_dnodeint_at_index - attemps to insert a new node
+ * at given position
  * @head: pointer to head of the list
- * @pos: node to find
- * @n: node to find
+ * @pos: index it insert new node in
+ * @n: data for the new node
  *
- * Return: address of node if found, NULL otherwise
+ * Return: pointer to the new node if successfully inserted;
+ * NULL otherwise
  */
-dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int pos, int n)
+dlistint_t *insert_dnodeint_at_index(
+		dlistint_t **head,
+		unsigned int pos,
+		int n)
 {
 	unsigned int i = 0;
 	dlistint_t *before = NULL, *new = NULL, *after = NULL;
@@ -42,10 +46,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head, unsigned int pos, int n)
 		*head = new;
 	else
 		before->next = new;
-
 	new->prev = before;
 	new->next = after;
-
 	if (after != NULL)
 		after->prev = new;
 
