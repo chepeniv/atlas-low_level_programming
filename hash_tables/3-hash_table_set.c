@@ -18,7 +18,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	size = ht->size;
-	index = key_index((unsigned) key, size);
+	index = key_index((unsigned char) key, size);
 
 	valdup = strdup(value);
 	keydup = strdup(key);
