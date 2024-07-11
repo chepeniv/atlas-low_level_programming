@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * add_dnodeint_end - adds a new tail node to a given doubly linked list

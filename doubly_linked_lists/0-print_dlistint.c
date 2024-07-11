@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdio.h>
 
 /**
  * print_dlistint - printout the data of each element in doubly linked list
@@ -14,5 +13,5 @@ size_t print_dlistint(const dlistint_t *h)
 	if (h->next == NULL)
 		return (1);
 	printf("&d\n", h->n);
-	return (print_list(h->next) + 1);
+	return (print_dlistint(h->next) + 1);
 }
