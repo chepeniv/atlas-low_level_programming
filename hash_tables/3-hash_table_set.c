@@ -32,7 +32,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	array = ht->array;
 	first = *array;
 	pos = first + index;
-	*pos = *new;
+	pos = new;
 
 	return (1);
 }
