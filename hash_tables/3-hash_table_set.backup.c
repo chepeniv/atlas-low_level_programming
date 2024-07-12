@@ -1,13 +1,5 @@
 #include "hash_tables.h"
 
-/**
- * hash_table_set - attempts to add an entry into the hashtable
- * @ht: pointer to the hashtable
- * @key: a nonempty string
- * @value: any string data
- *
- * Return: success, 1; failure, 0
- */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
@@ -23,16 +15,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new->value = valdup;
 	new->next = NULL;
 
-	pos = ht->array + index;
 	printf("index:\t\t\t%lu\n", index);
-	printf("sizeof hashnode:\t%lu\n", sizeof(hash_node_t));
-	printf("sizeof void *:\t\t%lu\n", sizeof(void *));
 	printf("new:\t\t\t%p\n", new);
-	printf("ht:\t\t\t%p\n", ht);
 	printf("ht->array:\t\t%p\n", ht->array);
-	printf("*(ht->array):\t\t%p\n", *(ht->array));
-	printf("(ht->array) + index:\t%p\n", (ht->array) + index);
-	printf("*(ht->array) + index:\t%p\n", *(ht->array) + index);
+	printf("ht->array + 1:\t\t%p\n", ht->array + 1);
+	printf("diff of sizeof void *:\t%lu\n", sizeof(void *));
+	printf("ht->array + index:\t%p\n", ht->array + index);
+	pos = ht->array + index;
 	printf("pos, *pos:\t\t%p, %p\n", pos, *pos);
 	*pos = new;
 	printf("pos, *pos:\t\t%p, %p\n", pos, *pos);
