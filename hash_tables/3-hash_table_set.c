@@ -25,7 +25,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	pos = ht->array + index;
 
-	**pos = *new;
+	*pos = new;
 
 	return (1);
 }
