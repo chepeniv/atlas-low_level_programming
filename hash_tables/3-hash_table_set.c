@@ -24,7 +24,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	pos = *ht->array + index;
 	pos = malloc(sizeof(hash_node_t));
-	if (pos = NULL || keydup == NULL || valdup == NULL)
+	if (pos == NULL || keydup == NULL || valdup == NULL)
 	{
 		free(pos);
 		free(keydup);
