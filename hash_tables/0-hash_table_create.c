@@ -11,8 +11,7 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *ht;
-	hash_node_t *htarray, **pos;
-	unsigned long int i = 0;
+	hash_node_t *htarray;
 
 	htarray = malloc(sizeof(hash_node_t *) * size);
 	if (htarray == NULL)
@@ -24,16 +23,16 @@ hash_table_t *hash_table_create(unsigned long int size)
 		free(htarray);
 		return (NULL);
 	}
-
-	pos = &htarray;
-	while (i < size - 1)
+	/*
+	pos = htarray;
+	while (i < size)
 	{
-		pos[i] = NULL;
+		pos = NULL;
 		printf("set pos %lu to NULL\n", i);
-		pos++;
+		pos = pos + i;
 		++i;
 	}
-
+	*/
 	ht->size = size;
 	ht->array = &htarray;
 
