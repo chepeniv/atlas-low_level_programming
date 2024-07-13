@@ -22,7 +22,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	pos = ht->array + index;
 	new = malloc(sizeof(hash_node_t));
 
-	*pos = new;
+	pos = &new;
 	(*pos)->key = keydup;
 	(*pos)->value = valdup;
 	(*pos)->next = NULL;
