@@ -18,8 +18,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	index = key_index((const unsigned char *)key, ht->size);
 
-	pos = ht->array;
-	pos = pos + index;
+	pos = ht->array + index;
 	node = *pos;
 	strdata = node->value;
 	return (strdata);

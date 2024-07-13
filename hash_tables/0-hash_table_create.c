@@ -23,16 +23,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 		free(htarray);
 		return (NULL);
 	}
-	/*
-	pos = htarray;
-	while (i < size)
-	{
-		pos = NULL;
-		printf("set pos %lu to NULL\n", i);
-		pos = pos + i;
-		++i;
-	}
-	*/
+
 	ht->size = size;
 	ht->array = &htarray;
 
