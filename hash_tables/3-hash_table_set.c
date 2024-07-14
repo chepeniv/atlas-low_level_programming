@@ -12,7 +12,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	char *keydup, *valdup;
-	hash_node_t **pos, *old, *new;
+	hash_node_t **pos, *old, *temp, *new;
 
 	if (key == NULL || ht == NULL)
 		return (0);
@@ -36,20 +36,18 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	old = *pos;
 	if (old != NULL)
 	{
-		while (old != NULL)
+		temp = old;
+		while (temp != NULL)
 		{
-			if (strcmp(old->key, key) == 0)
+			if (strcmp(temp->key, key) == 0)
 			{
-				old->value = valdup;
+				temp->value = valdup;
 				return (1);
 			}
-			old = old->next;
+			temp = temp->next;
 		}
-		new->next = *pos;
 	}
-	else
-		*pos = new;
-
-
+	new->next = old;
+	*pos = new;
 	return (1);
 }
