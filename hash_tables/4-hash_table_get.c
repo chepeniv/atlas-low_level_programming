@@ -20,12 +20,12 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	pos = ht->array + index;
 	node = *pos;
 
+	if (node == NULL)
+		return (NULL);
+
 	while (strcmp(node->key, key))
 		node = node->next;
-	if (node->value != NULL)
-		strdata = node->value;
-	else
-		strdata = "(null)";
+	strdata = node->value;
 
 	return (strdata);
 }
