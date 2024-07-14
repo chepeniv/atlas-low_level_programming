@@ -21,6 +21,10 @@ int main(void)
     hash_table_set(ht, "rediscribed", "the data entered for key instance 8");
     hash_table_set(ht, "dram", "the data entered for key instance 9");
     hash_table_set(ht, "vivency", "clash with dram");
+    hash_table_set(ht, "atlas", "value insert 1");
+    hash_table_set(ht, "atlas", "value insert 2");
+    hash_table_set(ht, "atlas", "value insert 3");
+    hash_table_set(ht, "atlas", "value insert 4");
 
 	hash_table_print(ht);
 	hash_table_delete(ht);
