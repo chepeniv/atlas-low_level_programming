@@ -22,7 +22,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	while (strcmp(node->key, key))
 		node = node->next;
-	strdata = node->value;
+	if (node-value != NULL)
+		strdata = node->value;
+	else
+		strdata = "(null)";
 
 	return (strdata);
 }
