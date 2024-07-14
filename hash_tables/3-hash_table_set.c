@@ -36,20 +36,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	old = *pos;
 	if (old != NULL)
 	{
-		while (old->next != NULL)
+		while (old != NULL)
 		{
 			if (strcmp(old->key, key) == 0)
 			{
 				old->value = valdup;
 				return (1);
 			}
-			else
-				old = old->next;
+			old = old->next;
 		}
+		new->next = old;
 	}
+	else
+		*pos = new;
 
-	new->next = old;
-	*pos = new;
 
 	return (1);
 }
