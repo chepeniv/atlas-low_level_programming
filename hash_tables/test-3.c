@@ -6,7 +6,7 @@
 int main(void)
 {
     hash_table_t *ht;
-	char *mystring;
+	/*char *mystring;*/
 	unsigned long int size = 1024;
 
     ht = hash_table_create(size);
