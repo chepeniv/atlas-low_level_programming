@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_print - destroy entire contents of given hashtable
+ * hash_table_delete - destroy entire contents of given hashtable
  * @ht: pointer to hashtable
  *
  * Return: void
