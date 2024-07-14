@@ -6,7 +6,7 @@
 int main(void)
 {
     hash_table_t *ht;
-	/*char *mystring;*/
+	char *mystring;
 	unsigned long int size = 1024;
 
     ht = hash_table_create(size);
@@ -21,7 +21,6 @@ int main(void)
     hash_table_set(ht, "rediscribed", "the data entered for key instance 8");
     hash_table_set(ht, "dram", "the data entered for key instance 9");
 
-	/*
 	mystring = hash_table_get(ht, "joyful");
 	printf("%s\n", mystring);
 	mystring = hash_table_get(ht, "dram");
@@ -34,7 +33,6 @@ int main(void)
 	printf("%s\n", mystring);
 	mystring = hash_table_get(ht, "depravement");
 	printf("%s\n", mystring);
-	*/
 
     return (EXIT_SUCCESS);
 }
