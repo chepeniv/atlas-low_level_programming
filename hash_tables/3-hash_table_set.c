@@ -45,7 +45,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			}
 			old = old->next;
 		}
-		new->next = old;
+		new->next = *pos;
 	}
 	else
 		*pos = new;
