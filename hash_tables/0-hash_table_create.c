@@ -12,16 +12,19 @@ hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *ht;
 	hash_node_t **htarray;
+	unsigned long int i = 0;
 
 	htarray = malloc(sizeof(hash_node_t *) * size);
-	if (htarray == NULL)
-		return (NULL);
-
 	ht = malloc(sizeof(hash_table_t));
-	if (ht == NULL)
+	if (ht == NULL || htarray == NULL)
 	{
 		free(htarray);
 		return (NULL);
+	}
+	while (i < size)
+	{
+		htarray[i] = NULL;
+		++i;
 	}
 
 	ht->size = size;

@@ -17,15 +17,21 @@ int main(void)
     hash_table_set(ht, "heliotropes", "the data entered for key instance 4");
     hash_table_set(ht, "depravement", "the data entered for key instance 5");
     hash_table_set(ht, "stylist", "the data entered for key instance 6");
+    hash_table_set(ht, "subgenera", "clash with stylist");
     hash_table_set(ht, "joyful", "the data entered for key instance 7");
     hash_table_set(ht, "rediscribed", "the data entered for key instance 8");
     hash_table_set(ht, "dram", "the data entered for key instance 9");
+    hash_table_set(ht, "vivency", "clash with dram");
 
 	mystring = hash_table_get(ht, "joyful");
 	printf("%s\n", mystring);
 	mystring = hash_table_get(ht, "dram");
 	printf("%s\n", mystring);
+	mystring = hash_table_get(ht, "vivency");
+	printf("%s\n", mystring);
 	mystring = hash_table_get(ht, "stylist");
+	printf("%s\n", mystring);
+	mystring = hash_table_get(ht, "subgenera");
 	printf("%s\n", mystring);
 	mystring = hash_table_get(ht, "C");
 	printf("%s\n", mystring);
