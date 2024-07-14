@@ -14,17 +14,23 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	char *keydup, *valdup;
 	hash_node_t **pos, *new;
 
-	if (key == NULL)
+	if (key == NULL || ht == NULL)
 		return (0);
 
 	index = key_index((const unsigned char *)key, ht->size);
 
 	keydup = strdup(key);
+	if (keydup == NULL)
+		return (0);
 	valdup = strdup(value);
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL || keydup == NULL || valdup == NULL)
+	if (valdup == NULL)
 	{
-		free(new);
+		free(keydup);
+		return (0);
+	}
+	new = malloc(sizeof(hash_node_t));
+	if (new == NULL)
+	{
 		free(keydup);
 		free(valdup);
 		return (0);
