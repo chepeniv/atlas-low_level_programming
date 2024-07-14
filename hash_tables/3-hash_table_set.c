@@ -28,7 +28,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		free(valdup);
 		return (0);
 	}
-
 	new->key = keydup;
 	new->value = valdup;
 	new->next = NULL;
@@ -36,7 +35,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	pos = ht->array + index;
 	old = *pos;
 	if (old != NULL)
-		new->next = old;
+	{
+		while (old->next != NULL)
+		{
+			if (strcmp(old->key, key) == 0)
+			{
+				old->value = valdup;
+				return (1);
+			}
+			else
+				old = old->next;
+		}
+	}
+
+	new->next = old;
 	*pos = new;
 
 	return (1);
