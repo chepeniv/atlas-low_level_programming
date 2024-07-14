@@ -11,7 +11,7 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *ht;
-	hash_node_t *htarray;
+	hash_node_t **htarray;
 
 	htarray = malloc(sizeof(hash_node_t *) * size);
 	if (htarray == NULL)
@@ -25,7 +25,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	}
 
 	ht->size = size;
-	ht->array = &htarray;
+	ht->array = htarray;
 
 	return (ht);
 }
