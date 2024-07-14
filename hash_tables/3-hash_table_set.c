@@ -20,16 +20,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	index = key_index((const unsigned char *)key, ht->size);
 
 	keydup = strdup(key);
-	if (keydup == NULL)
-		return (0);
 	valdup = strdup(value);
-	if (valdup == NULL)
-	{
-		free(keydup);
-		return (0);
-	}
 	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
+	if (new == NULL || valdup == NULL || keydup == NULL)
 	{
 		free(keydup);
 		free(valdup);
