@@ -1,12 +1,13 @@
 #include "search_algos.h"
 
 /**
- * linear_search -
- * @array:
- * @size:
- * @value:
+ * linear_search - iterates through an unsorted array of numbers until it finds
+ * the index of the value given
+ * @array: array to search through
+ * @size: length of the array given
+ * @value: value to search for
  *
- * Return:
+ * Return: success - index of the value found; failure - (-1)
  */
 int linear_search(int *array, size_t size, int value)
 {
