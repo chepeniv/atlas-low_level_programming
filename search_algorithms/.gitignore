@@ -1,0 +1,7 @@
+main.c
+*.main.c
+*.test.c
+*.out
+*.guide
+*.output
+test/
