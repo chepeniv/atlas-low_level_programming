@@ -14,7 +14,7 @@ int binary_search(int *array, size_t size, int value)
 	if (array == NULL)
 		return (-1);
 
-	return binary_search_eng(array, 0, size - 1, value);
+	return (binary_search_eng(array, 0, size - 1, value));
 }
 
 /**
@@ -24,7 +24,7 @@ int binary_search(int *array, size_t size, int value)
  * @len: length of the subarray to analyse through
  * @value: the target value
  *
- * Return: void
+ * Return: position of value if found, else -1
  */
 int binary_search_eng(int *array, int pos, int len, int value)
 {
@@ -48,15 +48,16 @@ int binary_search_eng(int *array, int pos, int len, int value)
 	if (value == array[mid])
 		return (mid);
 	else if (value > array[mid])
-		return binary_search_eng(array, up_pos, up_len, value);
+		return (binary_search_eng(array, up_pos, up_len, value));
 	else
-		return binary_search_eng(array, low_pos, low_len, value);
+		return (binary_search_eng(array, low_pos, low_len, value));
 }
 
 /**
  * print_progress - outputs the progress of the current search
  * @array: array to printout
- * @size: length of the array given
+ * @pos: position from which to start
+ * @len: length of the subarray
  *
  * Return: void
  */
