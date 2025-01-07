@@ -100,6 +100,8 @@ all: file1 file2 file3
 
 ### Automatic Variables
 
+[10.5.3 Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html)
+
 - `$@` references the each target given in a rule
 - `$?` references all prerequisites newer than the target
 - `$^` references all prerequisites
@@ -131,7 +133,6 @@ implicit rules make use of special user defined variables
 	- creates the final object file from `.o` files
 
 example :
-
 ```make
 CC = gcc
 CFLAGS = -g
@@ -144,35 +145,182 @@ foo: foo.o
 ```
 
 ### Static Pattern Rules
-#### Filter
+
+syntax:
+```make
+targets: target-pattern: prereq-pattern ...
+	commands
+```
+herein, the given `target` is matched by the `target-pattern` via the `%`
+wildcard. the stem is whatever is matched, which is then substituted into the
+`prereq-pattern` in order to generate the target's prerequisites
+
+example:
+```make
+objects = foo.o bar.o baz.o
+
+all: $(objects)
+	$(CC) $^ -o nar
+
+# the stem extracted by `%.o` is substituted into `%.c`
+$(objects): %.o: %.c
+	$(CC) -c $^ -o $@
+
+```
+
+- for rules, when there is more than one match, `make` will prioritize the most
+  specific one
+
+within static pattern rules, the `filter` function is in common usage. its
+purpose is to match the correct files.
+
 ### Pattern Rules
+
+- are a way to define custom implicit rules
+- a simpler form of static pattern rules
+
+pattern rules contain a `%` in the target. it matches any nonempty string while
+the other characters match themselves. the `%` in the prerequisite substitutes
+the matched stem
+
+example:
+```make
+# a pattern rule that compiles every .c file into a .o file
+%.o: %.c
+	$(cc) -c $(cflags) $(cppflags) $< -o $@
+```
+
 ### Double-Colon Rules
+
+these allow multiple rules to be defined for the same target
+```make
+all: foo
+
+foo::
+	echo "hello"
+
+foo::
+	echo "hello, again"
+```
 
 ## Commands and Execution
 
 ### Echoing and Silencing
+
+- an `@` preceding a command will prevent printing it out
+- alternatively, passing the `-s` flag to make will also silence the command
+  printing
+
 ### Execution
-### Default Shell
-### `$$`
+
+- each command-line in a rule will run in it's own shell
+- to run commands together they should be put on the same line
+- to change the default shell set the `SHELL` variable to the binary's path
+
+- in order to have a dollar sign in a string use `$$` - this is how variables
+  are passed to the shell
+```make
+all:
+	sh_var='hello, world'; echo $$sh_var
+```
+
 ### Error Handling
-### Interrupting and Killing
+
+- the `-k` flag will continue running regardless of errors
+	- this is useful if you wish to see all errors generated
+- adding `-` before a command will suppress its errors
+- the `-i` flag will suppress errors for all commands
+- `ctrl+c` will delete all the newest targets just created
+
 ### Recursive Usage
+
+- in order to invoke a makefile use `$(MAKE)` since it will pass the proper
+  flags
+
 ### Export, Environments, and Recursive Make
+
+- when make is ran, it automatically creates make variables from the all the
+  environment variables set when executed
+- the `export` directive adds variables to the environment for subsequent
+  sub-shells to use
+	- this permits recursive calls to use previously defined variables
+- `.EXPORT_ALL_VARIABLES:` exports all variables in a makefile
+
 ### Arguments
 
-## Variables Pt. 2
+[9.8 summary of options](https://www.gnu.org/software/make/manual/make.html#Options-Summary)
+
+notable ones would be `--dry-run`, `--touch`, and `--old-file`
+
+multiple targets specified to make are run in sequence
+
+## Variables Expanded
 
 ### Flavors and Modifications
+
+- recursive (`=`) : searches for the variable when a command is invoked, not
+  when it's defined
+- simply expanded (`:=`) : as in imperative programming wherein only variables
+  defined *thus far* get expanded
+	- these allow for appending previously defined variables
+
+- conditional (`?=`) : will only set a variable it has not been previously
+  defined
+
+- preceding white is trimmed, while trailing whitespace is not stripped
+- use `nullstring =` to allow creating a variable with a single whitespace
+	- `space = $(nullstring) `
+
+- undefined variable evaluate to empty strings
+- `+=` appends to a previously defined variable
+
+#### Resources
+
+- [string substitution](https://makefiletutorial.com/#string-substitution)
+- [text functions](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#Text-Functions)
+- [filename functions](https://www.gnu.org/software/make/manual/html_node/File-Name-Functions.html#File-Name-Functions)
+
 ### Commandline Arguments and Override
+
+variables provided by the commandline  can be overwritten by using `override`
+if make is invoked as `make option_A=hello` then it can be overwritten with
+```make
+override option_A = goodbye
+```
+
 ### List of Commands and Define
+
+`define` with `endef` is used to create a variable set to a list of commands
+
 ### Target-specific Variables
-### Pattern-specific Variables
+
+variables may be set for specific targets
+```make
+target: var = value
+```
+as well as for specific target patterns
+```make
+%.ext: boo = tar
+```
 
 ## Conditional part of Makefiles
 
 ### if/else
-### Check Empty Variable
-### Check Defined Variable
+
+```make
+check = B
+
+target:
+ifeq ($(check), B)
+	command set 1
+else
+	command set 2
+endif
+```
+
+- use `ifeq ($(strip $(bar)),) ... endif` to check if a variable is empty
+- use `ifdef` or `ifndef` to check whether a variable is defined
+
 ### `$(MAKEFLAGSS)`
 
 ## Functions
