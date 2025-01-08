@@ -10,8 +10,6 @@ NAME = school
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-$(OBJ): $(SRC)
-
 clean:
 	rm $(OBJ)
 
