@@ -321,25 +321,84 @@ endif
 - use `ifeq ($(strip $(bar)),) ... endif` to check if a variable is empty
 - use `ifdef` or `ifndef` to check whether a variable is defined
 
-### `$(MAKEFLAGSS)`
+- flags passed onto make may be analysed with `findstrng` and `$(MAKEFLAGSS)`
+```make
+null:
+ifneq (,$(findstring i, $(MAKEFLAGS)))
+	command set
+endif
+```
 
 ## Functions
 
-### First Functions
-### String Substitution
-### `foreach` Function
-### `if` Function
-### `call` Function
-### `shell` Function
-### `filter` Function
+[make functions](https://www.gnu.org/software/make/manual/html_node/Functions.html)
+
+functions are primarily for text processing. functions are invoked with either
+`$(fn, args)` or by `${fn, args}`
+
+be cautious when inserting spaces within the arguments as they will be seen as
+part of the string
+
+in order to use spaces and commas, define special variables:
+```make
+null :=
+comma := ,
+space := $(null) $(null)
+```
+
+- `$(patsubst pattern,replacement,text)` can be invoked with the shorthand
+`$(text:pattern=replacement)`
+	- this function can make use of the `%` wildcard (within both the pattern
+	  and replacement) which matches any number of any characters.
+	- [details](https://www.gnu.org/software/make/manual/html_node/Text-Functions.html#index-patsubst-1)
+
+- `$(foreach var,text,operation)` transforms each whitespace-separated word
+within the given text
+
+- `$(if check,true,false)` examines whether `check` is non-empty, if so it runs
+  `true` otherwise it runs `false`
+
+- `make` supports defining basic functions by creating a variable with
+  parameters of the form `$(0)`, `$(1)`, `$(2)`,,,
+- these custom functions are invoked with `$(call variable,param0,param1,,,)`
+
+- `$(shell program options params)` invokes the shells but replaces all the
+  newlines with spaces
+
+- `$(filter pattern,text)` returns all words within `text` that have matched the
+  `pattern`
+	- multiple patterns may be filtered by simply extending the space-separated
+	  pattern list `$(filter patern1 pattern2 pattern3, text)`
+	- the inverse operation, removing matches, may be invoked with
+	  `$(filter-out pattern,text)`
+	- calls to filter may be nested for more complex pattern matching
+	  `$(filter pattern,$(filter pattern, $(filter-out  pattern,text)))`
 
 ## Additional Features
 
-### Include Makefiles
-### `vpath` Directive
-### Multiline
-### `.phony`
-### `.delete_on_error`
+- multiple makefiles may be invoked within a single one via the `include`
+  directive
+	- this can be useful whenever a compiler generates makefiles of it's own
+	  when passed the `-M` flag
 
-## Makefile Cookbook
+- the `vpath` directive specifies where prerequisites exist
+	- `vpath <pattern> <directories>` will return files matching the pattern
+	  within the space (or colon) separated directories
+	- it allows for foreign files to be referenced and used
+	- `<pattern>` can also make use of the `%` wildcard
 
+- the backslash character allows us to break long lines into multiple
+
+- adding `.PHONY` to a target will prevent `make` from interpreting it as an
+  actual filename
+	- this is typically added to targets such as `all` and `clean`
+```make
+.PHONY: clean
+clean:
+	commands
+```
+
+- `make` halts execution of a rule (and propagate back to the prerequisites)
+  if a command returns a nonzero status
+- if a nonzero status is encountered, then `.DELETE_ON_ERROR:` will discard any
+  such target
