@@ -102,7 +102,7 @@ all: file1 file2 file3
 
 [10.5.3 Automatic Variables](https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html)
 
-- `$@` references the each target given in a rule
+- `$@` references each target given in a rule
 - `$?` references all prerequisites newer than the target
 - `$^` references all prerequisites
 - `$<` references the first prerequisite
