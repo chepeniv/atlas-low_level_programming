@@ -5,11 +5,13 @@ NAME := school
 
 .DELETE_ON_ERROR:
 
-.PHONY: all 
-all: $(NAME)
+.PHONY: all clean
 
-
-$(NAME): $(OBJ)
-
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 $(OBJ): $(SRC)
+
+clean:
+	rm $(OBJ)
+
