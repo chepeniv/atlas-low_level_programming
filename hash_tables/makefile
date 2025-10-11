@@ -19,20 +19,29 @@ MEMTEST := valgrind ${VALFL}
 
 .PHONY: clean clean-obj clean-lib betty
 
-######## TASKS
+######## RELEASE
 
 0build: clean
 	# ${CCMD} source.c -o 0bin.x
+
+######## DEVELOPMENT
+
+dev-sorted_hash_table: clean
+	${CDEV} 100-sortet_hash_table.c test-sorted_hash_table.c -o sorted_ht.x
 
 ######## RUN
 
 0run: 0build
 	# ./0bin.x
 
-######## TESTING
+######## TEST
 
 0test:
 	# test suite
+
+test-sorted_hash_tables: dev-hash_table
+	@./sorted_ht.x 2>1 1>actual.out
+	@nvim -O *.out
 
 ######## memory checks
 
