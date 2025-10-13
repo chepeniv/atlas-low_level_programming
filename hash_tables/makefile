@@ -27,7 +27,7 @@ MEMTEST := valgrind ${VALFL}
 ######## DEVELOPMENT
 
 dev-sorted_hash_table: clean
-	${CDEV} 100-sortet_hash_table.c test-sorted_hash_table.c -o sorted_ht.x
+	${CDEV} 1-djb2.c 2-key_index.c 100-sortet_hash_table.c test-sorted_hash_table.c -o sorted_ht.x
 
 ######## RUN
 
