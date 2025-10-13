@@ -7,10 +7,10 @@ CDEBUG  := -fsanitize=address -fsanitize=undefined -fsanitize=leak -ggdb3
 CCMD    := ${CC} ${CFLAGS}
 CDEV    := ${CC} ${CFLAGS} ${CDEBUG} 
 
-BINDIR  := bin
-TESTDIR := test
-DEFDIR  := def
-HEADDIR  := include
+# BINDIR  := bin
+# TESTDIR := test
+# DEFDIR  := def
+# HEADDIR := include
 
 VALFL   := -s --track-origins=yes --leak-check=full --show-leak-kinds=all
 MEMTEST := valgrind ${VALFL}
