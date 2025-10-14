@@ -1,23 +1,31 @@
 #include "hash_tables.h"
+#include <stdint.h> /* standardized types */
+#include <stdlib.h>
+#include <string.h>
+
+/* EXTERNAL FUNCTIONS */
 
 shash_table_t *
 shash_table_create(unsigned long int size)
 {
-	return (NULL);
+	shash_table_t *new_sorted_ht;
+	unsigned long int power_of_two = 1;
+
+	while (size < power_of_two)
+		power_of_two <<= 1;
+
+	new_sorted_ht = malloc(sizeof(shash_table_t));
+	new_sorted_ht->size = power_of_two;
+	new_sorted_ht->array = malloc(power_of_two * sizeof(void *));
+	new_sorted_ht->shead = NULL;
+	new_sorted_ht->stail = NULL;
+
+	return (new_sorted_ht);
 }
 
 int
 shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-
-	/*
-	 * the key-value pair should be inserted in the sorted list at the right
-	 * place
-	 *
-	 * note that here we do not want to do exactly like php: we want to create
-	 * a sorted linked list, by key (sorted on ascii value), that we can print
-	 * by traversing it
-	 */
 
 	return (0);
 }
