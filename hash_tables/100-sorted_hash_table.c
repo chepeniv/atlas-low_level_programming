@@ -3,6 +3,66 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* INTERNAL FUNCTIONS */
+
+char *
+dup_char_ptr(const char *orig)
+{
+	char *dup;
+	size_t len;
+
+	len = sizeof(char) * (strlen(orig) + 1);
+	dup = malloc(len);
+	strcpy(dup, orig);
+
+	return (dup);
+}
+
+/* sort the linked list by key (ascii value) rather than chronologically */
+void
+insert_sorted(shash_table_t *ht, shash_node_t *node)
+{
+	shash_node_t *prev, *next;
+
+	if (!ht->shead)
+	{
+		/* first insertion; sorted list must be initialized */
+		ht->shead = node;
+		ht->stail = node;
+		node->snext = NULL;
+		node->sprev = NULL;
+	}
+	else
+	{
+		/* find the node that follows the one at hand */
+		next = ht->shead;
+		while (strcmp(node->key, next->key) >= 0)
+		{
+			if (next->snext)
+				next = next->snext;
+			else
+				break;
+		}
+
+		/* check whether it slots in at the head or at the tail */
+		if (!next->sprev)
+			ht->shead = node;
+		if (!next->snext && strcmp(node->key, next->key) >= 0)
+			ht->stail = node;
+
+		/* update node links */
+		next->sprev = node;
+		node->snext = next;
+		node->sprev = next->sprev;
+		if (node->sprev)
+			node->sprev->snext = node;
+	}
+}
+
+void insert_collision(shash_table_t *ht, shash_node_t *node, void *index)
+{
+}
+
 /* EXTERNAL FUNCTIONS */
 
 shash_table_t *
