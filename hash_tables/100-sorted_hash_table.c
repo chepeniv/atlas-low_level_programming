@@ -134,11 +134,22 @@ shash_table_print(const shash_table_t *ht)
 void
 shash_table_print_rev(const shash_table_t *ht)
 {
-	/*
-	 * should print the hash tables key/value pairs in reverse order using the
-	 * sorted linked list
-	 */
-	(void) ht;
+	shash_node_t *node;
+
+	putchar('{');
+	node = ht->stail;
+	while (node)
+	{
+		printf("'%s': '%u'", node->key, *node->value);
+		if (node->sprev)
+		{
+			node = node->sprev;
+			putchar(' ');
+		} else {
+			break;
+		}
+	}
+	printf("}\n");
 }
 
 void
