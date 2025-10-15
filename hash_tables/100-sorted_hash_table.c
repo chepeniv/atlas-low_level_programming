@@ -109,11 +109,26 @@ shash_table_get(const shash_table_t *ht, const char *key)
 	return (NULL);
 }
 
+/* should print the hash table using the sorted linked list */
 void
 shash_table_print(const shash_table_t *ht)
 {
-	/* should print the hash table using the sorted linked list */
-	(void) ht;
+	shash_node_t *node;
+
+	putchar('{');
+	node = ht->shead;
+	while (node)
+	{
+		printf("'%s': '%u'", node->key, *node->value);
+		if (node->snext)
+		{
+			node = node->snext;
+			putchar(' ');
+		} else {
+			break;
+		}
+	}
+	printf("}\n");
 }
 
 void
