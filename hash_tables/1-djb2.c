@@ -6,14 +6,20 @@
  *
  * Return: generated hash
  */
-unsigned long int hash_djb2(const unsigned char *str)
+
+unsigned long int
+hash_djb2(const unsigned char *str)
 {
 	unsigned long int hash;
 	int c;
 
-	hash = 5381;
+	hash = 5381; /* prime number */
+
+	/* return ptr first, then incr ptr, then deref the returned ptr, */
 	while ((c = *str++))
-		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+		/* in general [n << s] <=> [n * 2^s] */
+		/* 33h + c */
+		hash = ((hash << 5) + hash) + c;
 
 	return (hash);
 }
