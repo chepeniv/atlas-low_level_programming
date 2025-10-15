@@ -22,8 +22,7 @@ MEMTEST := valgrind ${FL_VALG}
 ######## TESTS
 
 test-sorted_ht: 
-	${CTEST} 1-djb2.c 2-key_index.c 100-sortet_hash_table.c dev_test/sorted_hash_table.test.c -o test-sorted_ht.x
-	@./test-sorted_ht.x -l
+	@${CTEST} 1-djb2.c 2-key_index.c 100-sorted_hash_table.c dev_tests/sorted_hash_tables.test.c -o test-sorted_ht.x
 	@./test-sorted_ht.x --full-stats --verbose=0 --timeout=20 --color=always
 
 ######## MEMORY TESTS

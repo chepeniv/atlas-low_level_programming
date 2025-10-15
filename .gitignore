@@ -3,5 +3,5 @@
 *.ignore
 *.log
 *.out
-*.test.*
+*.x
 ./makefiles/*.o
