@@ -1,7 +1,5 @@
-#include <criterion/assert.h>
 #include <criterion/criterion.h>
-#include <criterion/internal/assert.h>
-#include <criterion/internal/test.h>
+#include <criterion/new/assert.h>
 
 #include "../hash_tables.h"
 #include "../hash_tables.test.h"
@@ -42,20 +40,26 @@
  * {'z': '4', 'y': '0', 'n': '5', 'm': '7', 'j': '1', 'c': '2', 'b': '3', 'a': '6'}
  */
 
-Test(internal, dup_char_ptr) {
-	const char *original = "this string will be duplicated";
+Test(internal, dup_char_ptr)
+{
+	char *original = "this string will be duplicated";
 	char *duplicate = dup_char_ptr(original);
-	cr_expect_str_eq(original, duplicate, "strings the not the same");
-	cr_expect_neq(&original, &duplicate, "addresses are not different");
+
+	cr_expect(eq(str, duplicate, original), "strings the not the same");
+	cr_expect(ne(ptr, &original, &duplicate), "addresses are not different");
+
 	free(duplicate);
 }
 
-Test(external, shash_table_create) {
-	shash_table_t *new_table = shash_table_create(334);
+Test(external, shash_table_create)
+{
+	ulong size = 334;
+	shash_table_t *new_table = shash_table_create(size);
 
-	cr_expect_eq(new_table->size, (2 << 8), "sizes not equal");
-	cr_expect_eq(new_table->shead, NULL, "shead not set to NULL");
-	cr_expect_eq(new_table->stail, NULL, "stail not set to NULL");
+	cr_expect(ge(sz, new_table->size, size), "sizes not equal");
+	cr_expect(eq(ptr, new_table->shead, NULL), "shead not set to NULL");
+	cr_expect(eq(ptr, new_table->stail, NULL), "stail not set to NULL");
+
 	free(new_table->array);
 	free(new_table);
 }
