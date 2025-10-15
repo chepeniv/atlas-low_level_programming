@@ -1,52 +1,34 @@
 CC      := gcc
 GDB     := cgdb
 
-CFLAGS  := -Wall -Werror -Wextra -pedantic 
-# -std=c99 
-CDEBUG  := -fsanitize=address -fsanitize=undefined -fsanitize=leak -ggdb3 
-CCMD    := ${CC} ${CFLAGS}
-CDEV    := ${CC} ${CFLAGS} ${CDEBUG} 
+FL_ERR   := -Wall -Werror -Wextra -pedantic 
+FL_DEBUG := -fsanitize=address -fsanitize=undefined -fsanitize=leak -ggdb3 
+FL_TEST  := $(shell pkg-config --cflags --libs criterion)
 
-# BINDIR  := bin
-# TESTDIR := test
-# DEFDIR  := def
-# HEADDIR := include
+CREL     := ${CC} ${FL_ERR}
+CDEV     := ${CC} ${FL_ERR} ${FL_DEBUG} 
+CTEST    := ${CC} ${FL_ERR} ${FL_DEBUG} ${FL_TEST} 
 
-VALFL   := -s --track-origins=yes --leak-check=full --show-leak-kinds=all
-MEMTEST := valgrind ${VALFL}
+FL_VALG   := -s --track-origins=yes --leak-check=full --show-leak-kinds=all
+MEMTEST := valgrind ${FL_VALG}
 
 .DELETE_ON_ERROR:
-
 .PHONY: clean clean-obj clean-lib betty
 
 ######## RELEASE
 
-0build: clean
-	# ${CCMD} source.c -o 0bin.x
-
 ######## DEVELOPMENT
 
-dev-sorted_hash_table: clean
-	${CDEV} 1-djb2.c 2-key_index.c 100-sortet_hash_table.c test-sorted_hash_table.c -o sorted_ht.x
+######## TESTS
+
+test-sorted_ht: 
+	${CTEST} 1-djb2.c 2-key_index.c 100-sortet_hash_table.c dev_test/sorted_hash_table.test.c -o test-sorted_ht.x
+	@./test-sorted_ht.x -l
+	@./test-sorted_ht.x --full-stats --verbose=0 --timeout=20 --color=always
+
+######## MEMORY TESTS
 
 ######## RUN
-
-0run: 0build
-	# ./0bin.x
-
-######## TEST
-
-0test:
-	# test suite
-
-test-sorted_hash_tables: dev-hash_table
-	@./sorted_ht.x 2>1 1>actual.out
-	@nvim -O *.out
-
-######## memory checks
-
-0memtest:
-	# ${MEMTEST} ./0bin.x
 
 ######## UTILITY
 
