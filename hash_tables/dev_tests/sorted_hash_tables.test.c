@@ -51,6 +51,10 @@ Test(internal, dup_char_ptr)
 	free(duplicate);
 }
 
+Test(internal, insert_sorted, .disabled = 1)
+{
+}
+
 Test(external, shash_table_create)
 {
 	ulong size = 334;
@@ -62,4 +66,12 @@ Test(external, shash_table_create)
 
 	free(new_table->array);
 	free(new_table);
+}
+
+Test(external, shash_table_delete)
+{
+	ulong size = 334;
+	shash_table_t *new_table = shash_table_create(size);
+	(void) new_table;
+	shash_table_delete(new_table);
 }

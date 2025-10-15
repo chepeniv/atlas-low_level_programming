@@ -129,5 +129,17 @@ shash_table_print_rev(const shash_table_t *ht)
 void
 shash_table_delete(shash_table_t *ht)
 {
-	(void) ht;
+	shash_node_t *node;
+
+	while (ht->shead)
+	{
+		node = ht->shead;
+		ht->shead = node->snext;
+		free(node->key);
+		free(node->value);
+		free(node);
+	}
+
+	free(ht->array);
+	free(ht);
 }
