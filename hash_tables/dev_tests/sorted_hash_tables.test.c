@@ -40,10 +40,12 @@
  * {'z': '4', 'y': '0', 'n': '5', 'm': '7', 'j': '1', 'c': '2', 'b': '3', 'a': '6'}
  */
 
-Test(internal, dup_char_ptr)
+/* INTERNAL API */
+
+Test(internal, dup_string)
 {
 	char *original = "this string will be duplicated";
-	char *duplicate = dup_char_ptr(original);
+	char *duplicate = dup_string(original);
 
 	cr_expect(eq(str, duplicate, original), "strings the not the same");
 	cr_expect(ne(ptr, &original, &duplicate), "addresses are not different");
@@ -51,11 +53,24 @@ Test(internal, dup_char_ptr)
 	free(duplicate);
 }
 
-Test(internal, insert_sorted, .disabled = 1)
-{
-}
+Test(internal, init_ht_arary, .disabled = 1)
+{ }
 
-Test(external, shash_table_create)
+Test(internal, insert_sorted, .disabled = 1)
+{ }
+
+Test(internal, get_collision_head, .disabled = 1)
+{ }
+
+Test(internal, append_collision_chain, .disabled = 1)
+{ }
+
+Test(internal, insert_collision, .disabled = 1)
+{ }
+
+/* EXTERNAL API */
+
+Test(external, shash_table_create, .disabled = 1)
 {
 	ulong size = 334;
 	shash_table_t *new_table = shash_table_create(size);
@@ -68,7 +83,19 @@ Test(external, shash_table_create)
 	free(new_table);
 }
 
-Test(external, shash_table_delete)
+Test(external, shash_table_set, .disabled = 1)
+{ }
+
+Test(external, shash_table_get, .disabled = 1)
+{ }
+
+Test(external, shash_table_print, .disabled = 1)
+{ }
+
+Test(external, shash_table_print_rev, .disabled = 1)
+{ }
+
+Test(external, shash_table_delete, .disabled = 1)
 {
 	ulong size = 334;
 	shash_table_t *new_table = shash_table_create(size);
