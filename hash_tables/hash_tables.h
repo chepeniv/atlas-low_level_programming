@@ -58,7 +58,6 @@ typedef struct shash_node_s
 	char *key;                  /* key string */
 	char *value;                /* hash index */
 	struct shash_node_s *next;  /* next collision */
-	struct shash_node_s *prev;  /* prev collision */
 	struct shash_node_s *snext; /* next sorted */
 	struct shash_node_s *sprev; /* prev sorted */
 } shash_node_t;

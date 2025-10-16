@@ -79,7 +79,7 @@ get_collision_head(shash_table_t *ht, shash_node_t *node)
 }
 
 int
-append_collision_chain( shash_node_t *head, shash_node_t *node)
+append_collision_chain(shash_node_t *head, shash_node_t *node)
 {
 	while (head->next)
 	{
@@ -96,7 +96,6 @@ append_collision_chain( shash_node_t *head, shash_node_t *node)
 	}
 	/* new node, append to last */
 	head->next = node;
-	node->prev = head;
 	return (1);
 }
 
@@ -179,7 +178,9 @@ shash_table_print(const shash_table_t *ht)
 		{
 			node = node->snext;
 			putchar(' ');
-		} else {
+		}
+		else
+		{
 			break;
 		}
 	}
@@ -200,7 +201,9 @@ shash_table_print_rev(const shash_table_t *ht)
 		{
 			node = node->sprev;
 			putchar(' ');
-		} else {
+		}
+		else
+		{
 			break;
 		}
 	}
