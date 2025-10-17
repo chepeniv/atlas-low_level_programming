@@ -148,7 +148,7 @@ shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	new_node->key = dup_string(key);
 	new_node->value = dup_string(value);
 
-	/* 0 existing node was updated, 1 new node was inserted */
+	/* 0 = existing node was updated, 1 = new node was inserted */
 	if (insert_collision(ht, new_node))
 		insert_sorted(ht, new_node);
 
@@ -158,9 +158,22 @@ shash_table_set(shash_table_t *ht, const char *key, const char *value)
 char *
 shash_table_get(const shash_table_t *ht, const char *key)
 {
-	(void) ht;
-	(void) key;
-	return (NULL);
+	ulong offset;
+	shash_node_t *index;
+
+	offset = key_index((const unsigned char *)key, ht->size);
+	index = *(ht->array + offset);
+
+	if (!index)
+		return (NULL);
+
+	while (strcmp(index->key, key))
+		if (index->next)
+			index = index->next;
+		else
+			return (NULL);
+
+	return (index->value);
 }
 
 /* should print the hash table using the sorted linked list */
