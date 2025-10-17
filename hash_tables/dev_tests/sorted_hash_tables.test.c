@@ -88,13 +88,27 @@ Test(external, shash_table_set, .disabled = 1)
 Test(external, shash_table_set_get, .disabled = 1)
 {
 	char *key = "key_a", *value = "value_a", *value_found;
-	shash_table_t *sorted_ht = shash_table_create(35);
+	shash_table_t *sorted_ht = shash_table_create(4);
 
 	shash_table_set(sorted_ht, key, value);
-	/* value_found = shash_table_get(sorted_ht, key); */
-
-	/* cr_log_info("test message, set --verbose=0"); */
+	value_found = shash_table_get(sorted_ht, key);
 	cr_expect(eq(str, value, value_found));
+
+	shash_table_set(sorted_ht, "new_k", "taohunht");
+	value_found = shash_table_get(sorted_ht, "new_k");
+	cr_expect(eq(str,  "taohunht", value_found));
+
+	shash_table_set(sorted_ht, "k", "taohunht");
+	value_found = shash_table_get(sorted_ht, "k");
+	cr_expect(eq(str,  "taohunht", value_found));
+
+	shash_table_set(sorted_ht, "a", "apple");
+	value_found = shash_table_get(sorted_ht, "a");
+	cr_expect(eq(str, "apple", value_found));
+
+	shash_table_set(sorted_ht, "b", "banana");
+	value_found = shash_table_get(sorted_ht, "b");
+	cr_expect(eq(str, "banana", value_found));
 
 	shash_table_delete(sorted_ht);
 }
