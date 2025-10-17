@@ -26,6 +26,21 @@ init_ht_array(shash_table_t *ht)
 		ht->array[i] = NULL;
 }
 
+shash_node_t *
+create_ht_node(const char *key, const char *value)
+{
+	shash_node_t *new_node;
+
+	new_node = malloc(sizeof(shash_node_t));
+	new_node->key = dup_string(key);
+	new_node->value = dup_string(value);
+	new_node->next = NULL;
+	new_node->snext = NULL;
+	new_node->sprev = NULL;
+
+	return (new_node);
+}
+
 /* sort the linked list alphabetically by key */
 void
 insert_sorted(shash_table_t *ht, shash_node_t *node)
@@ -65,18 +80,6 @@ insert_sorted(shash_table_t *ht, shash_node_t *node)
 		if (node->sprev)
 			node->sprev->snext = node;
 	}
-}
-
-shash_node_t *
-get_collision_head(shash_table_t *ht, shash_node_t *node)
-{
-	ulong offset;
-	shash_node_t *index;
-
-	offset = key_index((const unsigned char *)node->key, ht->size);
-	index = ht->array[offset];
-
-	return (index);
 }
 
 int
@@ -156,19 +159,9 @@ shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_node;
 
-	new_node = malloc(sizeof(shash_node_t));
-	new_node->key = dup_string(key);
-	new_node->value = dup_string(value);
-	new_node->next = NULL;
-	new_node->snext = NULL;
-	new_node->sprev = NULL;
-
-	insert_collision(ht, new_node);
-	/* 0 = existing node was updated, 1 = new node was inserted */
-	/*
+	new_node = create_ht_node(key, value);
 	if (insert_collision(ht, new_node))
 		insert_sorted(ht, new_node);
-	*/
 
 	return (0);
 }
@@ -180,7 +173,7 @@ shash_table_get(const shash_table_t *ht, const char *key)
 	shash_node_t *index;
 
 	offset = key_index((const unsigned char *)key, ht->size);
-	index = *(ht->array + offset);
+	index = ht->array[offset];
 
 	if (!index)
 		return (NULL);
