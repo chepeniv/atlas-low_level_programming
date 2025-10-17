@@ -89,8 +89,17 @@ append_collision_chain(shash_node_t *head, shash_node_t *node)
 		/* key already exist, update value */
 		if (!strcmp(head->key, node->key))
 		{
-			free(head->value);
-			head->value = node->value;
+			/*
+			 * just in case the old value gets cashed elsewhere, this will avoid
+			 * issues
+			 */
+			if (!strcmp(head->value, node->value))
+				free(node->value);
+			else
+			{
+				free(head->value);
+				head->value = node->value;
+			}
 			free(node->key);
 			free(node);
 			return (0);
@@ -146,12 +155,6 @@ int
 shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_node;
-	/* char *current_val; */
-
-	/*
-	current_val = shash_table_get(ht, key);
-	if (strcmp(current_val, value))
-		return (0); */
 
 	new_node = malloc(sizeof(shash_node_t));
 	new_node->key = dup_string(key);
@@ -208,9 +211,7 @@ shash_table_print(const shash_table_t *ht)
 			putchar(' ');
 		}
 		else
-		{
 			break;
-		}
 	}
 	printf("}\n");
 }
@@ -231,9 +232,7 @@ shash_table_print_rev(const shash_table_t *ht)
 			putchar(' ');
 		}
 		else
-		{
 			break;
-		}
 	}
 	printf("}\n");
 }
