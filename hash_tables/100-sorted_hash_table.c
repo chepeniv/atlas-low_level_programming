@@ -1,5 +1,6 @@
 #include "hash_tables.h"
 #include <stdint.h> /* standardized types */
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -66,14 +67,14 @@ insert_sorted(shash_table_t *ht, shash_node_t *node)
 	}
 }
 
-shash_node_t **
+shash_node_t *
 get_collision_head(shash_table_t *ht, shash_node_t *node)
 {
 	ulong offset;
-	shash_node_t **index;
+	shash_node_t *index;
 
 	offset = key_index((const unsigned char *)node->key, ht->size);
-	index = ht->array + offset;
+	index = ht->array[offset];
 
 	return (index);
 }
@@ -81,7 +82,9 @@ get_collision_head(shash_table_t *ht, shash_node_t *node)
 int
 append_collision_chain(shash_node_t *head, shash_node_t *node)
 {
-	while (head->next)
+	shash_node_t *last;
+
+	while (head)
 	{
 		/* key already exist, update value */
 		if (!strcmp(head->key, node->key))
@@ -92,28 +95,28 @@ append_collision_chain(shash_node_t *head, shash_node_t *node)
 			free(node);
 			return (0);
 		}
+		last = head;
 		head = head->next;
 	}
 	/* new node, append to last */
-	head->next = node;
+	last->next = node;
 	return (1);
 }
 
 int
 insert_collision(shash_table_t *ht, shash_node_t *node)
 {
-	shash_node_t **head;
+	shash_node_t *head;
+	ulong index;
 
-	head = get_collision_head(ht, node);
-	if (*head)
-	{
-		/* chain already setup, append to existing collisions */
-		return (append_collision_chain(*head, node));
-	}
+	index = key_index((const unsigned char *)node->key, ht->size);
+
+	head = ht->array[index];
+	if (head)
+		return (append_collision_chain(head, node));
 	else
 	{
-		/* index is empty, insert first collision */
-		head = &node;
+		ht->array[index] = node;
 		return (1);
 	}
 }
@@ -143,14 +146,26 @@ int
 shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_node;
+	/* char *current_val; */
+
+	/*
+	current_val = shash_table_get(ht, key);
+	if (strcmp(current_val, value))
+		return (0); */
 
 	new_node = malloc(sizeof(shash_node_t));
 	new_node->key = dup_string(key);
 	new_node->value = dup_string(value);
+	new_node->next = NULL;
+	new_node->snext = NULL;
+	new_node->sprev = NULL;
 
+	insert_collision(ht, new_node);
 	/* 0 = existing node was updated, 1 = new node was inserted */
+	/*
 	if (insert_collision(ht, new_node))
 		insert_sorted(ht, new_node);
+	*/
 
 	return (0);
 }
@@ -226,15 +241,30 @@ shash_table_print_rev(const shash_table_t *ht)
 void
 shash_table_delete(shash_table_t *ht)
 {
-	shash_node_t *node;
+	shash_node_t *next, *prev;
 
-	while (ht->shead)
+	/*
+	 * while (ht->shead)
+	 * {
+	 * 	node = ht->shead;
+	 * 	ht->shead = node->snext;
+	 * 	free(node->key);
+	 * 	free(node->value);
+	 * 	free(node);
+	 * 	}
+	 */
+
+	for (ulong i = 0; i < ht->size; i++)
 	{
-		node = ht->shead;
-		ht->shead = node->snext;
-		free(node->key);
-		free(node->value);
-		free(node);
+		next = ht->array[i];
+		while (next)
+		{
+			prev = next;
+			next = next->next;
+			free(prev->key);
+			free(prev->value);
+			free(prev);
+		}
 	}
 
 	free(ht->array);
