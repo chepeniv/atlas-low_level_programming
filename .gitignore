@@ -1,7 +1,7 @@
+# *.out
 *.doc
 *.error
 *.ignore
 *.log
-*.out
 *.x
 ./makefiles/*.o

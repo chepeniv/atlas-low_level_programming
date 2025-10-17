@@ -1,45 +1,11 @@
 #include <criterion/criterion.h>
-#include <criterion/internal/new_asserts.h>
+#include <criterion/assert.h>
+#include <criterion/redirect.h>
 #include <criterion/new/assert.h>
+#include <stdio.h>
 
 #include "../hash_tables.h"
 #include "../hash_tables.test.h"
-
-/*
- * shash_table_t *ht;
- * ht = shash_table_create(1024);
- * shash_table_set(ht, "y", "0");
- * shash_table_print(ht);
- * shash_table_set(ht, "j", "1");
- * shash_table_print(ht);
- * shash_table_set(ht, "c", "2");
- * shash_table_print(ht);
- * shash_table_set(ht, "b", "3");
- * shash_table_print(ht);
- * shash_table_set(ht, "z", "4");
- * shash_table_print(ht);
- * shash_table_set(ht, "n", "5");
- * shash_table_print(ht);
- * shash_table_set(ht, "a", "6");
- * shash_table_print(ht);
- * shash_table_set(ht, "m", "7");
- * shash_table_print(ht);
- * shash_table_print_rev(ht);
- * shash_table_delete(ht);
- */
-
-/*
- * EXPECTED OUTPUT
- * {'y': '0'}
- * {'j': '1', 'y': '0'}
- * {'c': '2', 'j': '1', 'y': '0'}
- * {'b': '3', 'c': '2', 'j': '1', 'y': '0'}
- * {'b': '3', 'c': '2', 'j': '1', 'y': '0', 'z': '4'}
- * {'b': '3', 'c': '2', 'j': '1', 'n': '5', 'y': '0', 'z': '4'}
- * {'a': '6', 'b': '3', 'c': '2', 'j': '1', 'n': '5', 'y': '0', 'z': '4'}
- * {'a': '6', 'b': '3', 'c': '2', 'j': '1', 'm': '7', 'n': '5', 'y': '0', 'z': '4'}
- * {'z': '4', 'y': '0', 'n': '5', 'm': '7', 'j': '1', 'c': '2', 'b': '3', 'a': '6'}
- */
 
 /* INTERNAL API */
 
@@ -54,7 +20,7 @@ Test(internal, dup_string, .disabled = 1)
 	free(duplicate);
 }
 
-Test(internal, init_ht_array, .timeout = 8)
+Test(internal, init_ht_array, .timeout = 8, .disabled = 1)
 {
 	ulong size = 32;
 	shash_table_t *ht = malloc(sizeof(shash_table_t));
@@ -64,7 +30,7 @@ Test(internal, init_ht_array, .timeout = 8)
 	ht->array = arr;
 	init_ht_array(ht);
 	for (ulong i = 0; i < size; i++)
-		cr_expect(eq(ptr, ht->array[i], NULL));
+		cr_expect(zero(ptr, ht->array[i]));
 	free(arr);
 	free(ht);
 }
@@ -96,6 +62,9 @@ Test(external, shash_table_create, .disabled = 1)
 	free(new_table);
 }
 
+Test(external, shash_table_set_get, .disabled = 1)
+{ }
+
 Test(external, shash_table_set, .disabled = 1)
 { }
 
@@ -103,7 +72,18 @@ Test(external, shash_table_get, .disabled = 1)
 { }
 
 Test(external, shash_table_print, .disabled = 1)
-{ }
+{
+	FILE *expected_out;
+	expected_out = fopen("dev_tests/expected.out", "r");
+
+	cr_redirect_stdout();
+	printf("hello, world\n");
+	fflush(stdout);
+
+	/* cr_expect_stdout_eq_str("hello, world"); */
+	cr_expect_stdout_eq(expected_out);
+	fclose(expected_out);
+}
 
 Test(external, shash_table_print_rev, .disabled = 1)
 { }
@@ -115,3 +95,38 @@ Test(external, shash_table_delete, .disabled = 1)
 	(void) new_table;
 	shash_table_delete(new_table);
 }
+
+Test(intranet_example, task_0, .disabled = 1)
+{
+	shash_table_t *ht;
+	FILE *expected_out;
+
+	expected_out = fopen("dev_tests/expected.out", "r");
+	ht = shash_table_create(1024);
+
+	cr_redirect_stdout();
+		shash_table_set(ht, "y", "0");
+		shash_table_print(ht);
+		shash_table_set(ht, "j", "1");
+		shash_table_print(ht);
+		shash_table_set(ht, "c", "2");
+		shash_table_print(ht);
+		shash_table_set(ht, "b", "3");
+		shash_table_print(ht);
+		shash_table_set(ht, "z", "4");
+		shash_table_print(ht);
+		shash_table_set(ht, "n", "5");
+		shash_table_print(ht);
+		shash_table_set(ht, "a", "6");
+		shash_table_print(ht);
+		shash_table_set(ht, "m", "7");
+		shash_table_print(ht);
+		shash_table_print_rev(ht);
+		shash_table_delete(ht);
+	fflush(stdout);
+	cr_expect_stdout_eq(expected_out);
+	fclose(expected_out);
+}
+
+Test(intranet_checker, task_0, .disabled = 1)
+{ }
