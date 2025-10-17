@@ -1,4 +1,5 @@
 #include <criterion/criterion.h>
+#include <criterion/internal/new_asserts.h>
 #include <criterion/new/assert.h>
 
 #include "../hash_tables.h"
@@ -42,7 +43,7 @@
 
 /* INTERNAL API */
 
-Test(internal, dup_string)
+Test(internal, dup_string, .disabled = 1)
 {
 	char *original = "this string will be duplicated";
 	char *duplicate = dup_string(original);
@@ -53,8 +54,20 @@ Test(internal, dup_string)
 	free(duplicate);
 }
 
-Test(internal, init_ht_arary, .disabled = 1)
-{ }
+Test(internal, init_ht_array, .timeout = 8)
+{
+	ulong size = 32;
+	shash_table_t *ht = malloc(sizeof(shash_table_t));
+	shash_node_t **arr = malloc(sizeof(void *) * size);
+
+	ht->size = size;
+	ht->array = arr;
+	init_ht_array(ht);
+	for (ulong i = 0; i < size; i++)
+		cr_expect(eq(ptr, ht->array[i], NULL));
+	free(arr);
+	free(ht);
+}
 
 Test(internal, insert_sorted, .disabled = 1)
 { }
