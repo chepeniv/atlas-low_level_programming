@@ -57,16 +57,47 @@ Test(external, shash_table_create, .disabled = 1)
 	cr_expect(ge(sz, new_table->size, size), "sizes not equal");
 	cr_expect(eq(ptr, new_table->shead, NULL), "shead not set to NULL");
 	cr_expect(eq(ptr, new_table->stail, NULL), "stail not set to NULL");
+	cr_expect(zero(ptr, new_table->array[0]), "array[0] not set to NULL");
+	cr_expect(eq(ptr, new_table->array[size], NULL), "array[size] not set to NULL");
 
 	free(new_table->array);
 	free(new_table);
 }
 
-Test(external, shash_table_set_get, .disabled = 1)
-{ }
-
 Test(external, shash_table_set, .disabled = 1)
-{ }
+{
+	char *key = "key_a", *value = "value_a";
+	shash_table_t *sorted_ht;
+
+	sorted_ht = shash_table_create(4);
+	shash_table_set(sorted_ht, key, value);
+	shash_table_set(sorted_ht, key, value);
+	shash_table_set(sorted_ht, key, "new value");
+	shash_table_set(sorted_ht, "key_b", "new value");
+	shash_table_set(sorted_ht, "key_b", "diff value");
+	shash_table_set(sorted_ht, "key_c", "a value");
+	shash_table_set(sorted_ht, "key_d", "a value");
+	shash_table_set(sorted_ht, "key_e", "a value");
+	shash_table_set(sorted_ht, "key_f", "a value");
+	shash_table_set(sorted_ht, "key_g", "a value");
+	shash_table_set(sorted_ht, "key_h", "a value");
+
+	shash_table_delete(sorted_ht);
+}
+
+Test(external, shash_table_set_get, .disabled = 1)
+{
+	char *key = "key_a", *value = "value_a", *value_found;
+	shash_table_t *sorted_ht = shash_table_create(35);
+
+	shash_table_set(sorted_ht, key, value);
+	/* value_found = shash_table_get(sorted_ht, key); */
+
+	/* cr_log_info("test message, set --verbose=0"); */
+	cr_expect(eq(str, value, value_found));
+
+	shash_table_delete(sorted_ht);
+}
 
 Test(external, shash_table_get, .disabled = 1)
 { }
@@ -80,7 +111,6 @@ Test(external, shash_table_print, .disabled = 1)
 	printf("hello, world\n");
 	fflush(stdout);
 
-	/* cr_expect_stdout_eq_str("hello, world"); */
 	cr_expect_stdout_eq(expected_out);
 	fclose(expected_out);
 }
