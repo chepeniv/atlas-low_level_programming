@@ -80,12 +80,6 @@ Test(internal, insert_sorted, .timeout = 8, .disabled = 1)
 	shash_table_delete(ht);
 }
 
-Test(internal, append_collision_chain, .disabled = 1)
-{ }
-
-Test(internal, insert_collision, .disabled = 1)
-{ }
-
 /* EXTERNAL API */
 
 Test(external, shash_table_create, .disabled = 1)
@@ -180,9 +174,6 @@ Test(external, shash_table_print, .disabled = 1)
 	fclose(expected_out);
 }
 
-Test(external, shash_table_print_rev, .disabled = 1)
-{ }
-
 Test(external, shash_table_delete, .disabled = 1)
 {
 	ulong size = 334;
@@ -190,6 +181,8 @@ Test(external, shash_table_delete, .disabled = 1)
 	(void) new_table;
 	shash_table_delete(new_table);
 }
+
+/* ASSIGNMENT CHECKS */
 
 Test(intranet_example, task_0, .disabled = 0)
 {

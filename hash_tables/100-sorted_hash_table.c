@@ -105,10 +105,6 @@ append_collision_chain(shash_node_t *head, shash_node_t *node)
 		/* key already exist, update value */
 		if (!strcmp(head->key, node->key))
 		{
-			/*
-			 * just in case the old value gets cashed elsewhere, this will avoid
-			 * issues
-			 */
 			if (!strcmp(head->value, node->value))
 				free(node->value);
 			else
@@ -139,11 +135,9 @@ insert_collision(shash_table_t *ht, shash_node_t *node)
 	head = ht->array[index];
 	if (head)
 		return (append_collision_chain(head, node));
-	else
-	{
-		ht->array[index] = node;
-		return (1);
-	}
+
+	ht->array[index] = node;
+	return (1);
 }
 
 /* EXTERNAL FUNCTIONS */
@@ -154,6 +148,7 @@ shash_table_create(unsigned long int size)
 	shash_table_t *new_sorted_ht;
 	unsigned long int power_of_two = 1;
 
+	/* not sure if this is required */
 	while (size > power_of_two)
 		power_of_two <<= 1;
 
@@ -175,7 +170,8 @@ shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (insert_collision(ht, new_node))
 		insert_sorted(ht, new_node);
 
-	return (0);
+	/* not sure what to return with this */
+	return (1);
 }
 
 char *
@@ -203,10 +199,9 @@ shash_table_get(const shash_table_t *ht, const char *key)
 void
 shash_table_print(const shash_table_t *ht)
 {
-	shash_node_t *node;
+	shash_node_t *node = ht->shead;
 
 	putchar('{');
-	node = ht->shead;
 	while (node)
 	{
 		printf("'%s': '%s'", node->key, node->value);
@@ -224,10 +219,9 @@ shash_table_print(const shash_table_t *ht)
 void
 shash_table_print_rev(const shash_table_t *ht)
 {
-	shash_node_t *node;
+	shash_node_t *node = ht->stail;
 
 	putchar('{');
-	node = ht->stail;
 	while (node)
 	{
 		printf("'%s': '%s'", node->key, node->value);
