@@ -42,8 +42,8 @@ Test(internal, insert_sorted, .timeout = 8, .disabled = 1)
 	shash_node_t *node;
 	char key[2], val[2];
 
-	 key[1] = '\0';
-	 val[1] = '\0';
+	key[1] = '\0';
+	val[1] = '\0';
 
 	key[0] = 'z';
 	val[0] = '1';

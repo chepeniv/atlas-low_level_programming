@@ -19,11 +19,17 @@ dup_string(const char *orig)
 	return (dup);
 }
 
-void
-init_ht_array(shash_table_t *ht)
+shash_node_t **
+create_ht_array(ulong size)
 {
-	for (ulong i = 0; i < ht->size; i++)
-		ht->array[i] = NULL;
+	shash_node_t **array;
+
+	array = malloc(size * sizeof(void *));
+
+	for (ulong i = 0; i < size; i++)
+		array[i] = NULL;
+
+	return (array);
 }
 
 shash_node_t *
@@ -55,9 +61,9 @@ insert_sorted(shash_table_t *ht, shash_node_t *new)
 	}
 	else
 	{
-		/* find the node that follows the one at hand */
 		prev = NULL;
 		next = ht->shead;
+		/* find the node that follows 'new' */
 		while (strcmp(new->key, next->key) >= 0)
 		{
 			if (next->snext)
@@ -73,7 +79,7 @@ insert_sorted(shash_table_t *ht, shash_node_t *new)
 		if (!prev)
 			prev = next->sprev;
 
-		/* check whether it slots in at the head or tail */
+		/* check whether 'new' slots in at the head or tail */
 		if (next == ht->shead)
 			ht->shead = new;
 		if (prev == ht->stail)
@@ -153,8 +159,7 @@ shash_table_create(unsigned long int size)
 
 	new_sorted_ht = malloc(sizeof(shash_table_t));
 	new_sorted_ht->size = power_of_two;
-	new_sorted_ht->array = malloc(power_of_two * sizeof(void *));
-	init_ht_array(new_sorted_ht);
+	new_sorted_ht->array = create_ht_array(power_of_two);
 	new_sorted_ht->shead = NULL;
 	new_sorted_ht->stail = NULL;
 
@@ -251,22 +256,6 @@ shash_table_delete(shash_table_t *ht)
 		free(prev->value);
 		free(prev);
 	}
-
-	/*
-	 * (void) node;
-	 * for (ulong i = 0; i < ht->size; i++)
-	 * {
-	 * 	next = ht->array[i];
-	 * 	while (next)
-	 * 	{
-	 * 		prev = next;
-	 * 		next = next->next;
-	 * 		free(prev->key);
-	 * 		free(prev->value);
-	 * 		free(prev);
-	 * 	}
-	 * }
-	 */
 
 	free(ht->array);
 	free(ht);
