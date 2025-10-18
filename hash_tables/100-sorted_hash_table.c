@@ -14,6 +14,8 @@ dup_string(const char *orig)
 
 	len = sizeof(char) * (strlen(orig) + 1);
 	dup = malloc(len);
+	if (!dup)
+		return (NULL);
 	strcpy(dup, orig);
 
 	return (dup);
@@ -26,6 +28,8 @@ create_ht_array(unsigned long size)
 	unsigned long i;
 
 	array = malloc(size * sizeof(void *));
+	if (!array)
+		return (NULL);
 
 	for (i = 0; i < size; i++)
 		array[i] = NULL;
@@ -39,6 +43,8 @@ create_ht_node(const char *key, const char *value)
 	shash_node_t *new_node;
 
 	new_node = malloc(sizeof(shash_node_t));
+	if (!new_node)
+		return (NULL);
 	new_node->key = dup_string(key);
 	new_node->value = dup_string(value);
 	new_node->next = NULL;
@@ -147,15 +153,12 @@ shash_table_t *
 shash_table_create(unsigned long int size)
 {
 	shash_table_t *new_sorted_ht;
-	unsigned long int power_of_two = 1;
-
-	/* not sure if this is required */
-	while (size > power_of_two)
-		power_of_two <<= 1;
 
 	new_sorted_ht = malloc(sizeof(shash_table_t));
-	new_sorted_ht->size = power_of_two;
-	new_sorted_ht->array = create_ht_array(power_of_two);
+	if (!new_sorted_ht)
+		return (NULL);
+	new_sorted_ht->size = size;
+	new_sorted_ht->array = create_ht_array(size);
 	new_sorted_ht->shead = NULL;
 	new_sorted_ht->stail = NULL;
 
@@ -166,6 +169,9 @@ int
 shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_node;
+
+	if (!key)
+		return (0);
 
 	new_node = create_ht_node(key, value);
 	if (insert_collision(ht, new_node))
@@ -180,6 +186,9 @@ shash_table_get(const shash_table_t *ht, const char *key)
 {
 	unsigned long offset;
 	shash_node_t *index;
+
+	if (!ht)
+		return (NULL);
 
 	offset = key_index((const unsigned char *)key, ht->size);
 	index = ht->array[offset];
