@@ -1,5 +1,6 @@
 #include <criterion/criterion.h>
 #include <criterion/assert.h>
+#include <criterion/logging.h>
 #include <criterion/redirect.h>
 #include <criterion/new/assert.h>
 #include <stdio.h>
@@ -35,11 +36,50 @@ Test(internal, init_ht_array, .timeout = 8, .disabled = 1)
 	free(ht);
 }
 
-Test(internal, insert_sorted, .disabled = 1)
-{ }
+Test(internal, insert_sorted, .timeout = 8, .disabled = 1)
+{
+	shash_table_t *ht = shash_table_create(8);
+	shash_node_t *node;
+	char key[2], val[2];
 
-Test(internal, get_collision_head, .disabled = 1)
-{ }
+	 key[1] = '\0';
+	 val[1] = '\0';
+
+	key[0] = 'z';
+	val[0] = '1';
+
+	cr_log_info("creating sorted linked list\n");
+	for (int i = 0; i < 9; i++)
+	{
+		node = create_ht_node(key, val);
+		insert_sorted(ht, node);
+		key[0]--;
+		val[0]++;
+	}
+
+	 key[0] = 'a';
+	 val[0] = '1';
+	 for (int i = 0; i < 9; i++)
+	 {
+		node = create_ht_node(key, val);
+		insert_sorted(ht, node);
+		key[0]++;
+		val[0]++;
+	 }
+
+	 key[0] = 'e';
+	 val[0] = '1';
+	 for (int i = 0; i < 9; i++)
+	 {
+		node = create_ht_node(key, val);
+		insert_sorted(ht, node);
+		key[0] += 2;
+		val[0]++;
+	 }
+
+	cr_log_info("destroying sorted ht data structure\n");
+	shash_table_delete(ht);
+}
 
 Test(internal, append_collision_chain, .disabled = 1)
 { }
@@ -64,23 +104,24 @@ Test(external, shash_table_create, .disabled = 1)
 	free(new_table);
 }
 
-Test(external, shash_table_set, .disabled = 1)
+Test(external, shash_table_set, .timeout = 8, .disabled = 1)
 {
-	char *key = "key_a", *value = "value_a";
+	char key[2], val[2];
 	shash_table_t *sorted_ht;
 
+	key[0] = 'a';
+	key[1] = '\0';
+	val[0] = '1';
+	val[1] = '\0';
+
 	sorted_ht = shash_table_create(4);
-	shash_table_set(sorted_ht, key, value);
-	shash_table_set(sorted_ht, key, value);
-	shash_table_set(sorted_ht, key, "new value");
-	shash_table_set(sorted_ht, "key_b", "new value");
-	shash_table_set(sorted_ht, "key_b", "diff value");
-	shash_table_set(sorted_ht, "key_c", "a value");
-	shash_table_set(sorted_ht, "key_d", "a value");
-	shash_table_set(sorted_ht, "key_e", "a value");
-	shash_table_set(sorted_ht, "key_f", "a value");
-	shash_table_set(sorted_ht, "key_g", "a value");
-	shash_table_set(sorted_ht, "key_h", "a value");
+
+	for (int i = 0; i < 8; i++)
+	{
+		shash_table_set(sorted_ht, key, val);
+		key[0]++;
+		val[0]++;
+	}
 
 	shash_table_delete(sorted_ht);
 }
@@ -88,7 +129,15 @@ Test(external, shash_table_set, .disabled = 1)
 Test(external, shash_table_set_get, .disabled = 1)
 {
 	char *key = "key_a", *value = "value_a", *value_found;
-	shash_table_t *sorted_ht = shash_table_create(4);
+	shash_table_t *sorted_ht = shash_table_create(7);
+
+	cr_log_info("running shash_table_get with no entries");
+	value_found = shash_table_get(sorted_ht, "i");
+	cr_expect(zero(ptr, value_found));
+
+	cr_log_info("running shash_table_get with no entries, attempt 2");
+	value_found = shash_table_get(sorted_ht, "j");
+	cr_expect(zero(ptr, value_found));
 
 	shash_table_set(sorted_ht, key, value);
 	value_found = shash_table_get(sorted_ht, key);
@@ -110,11 +159,14 @@ Test(external, shash_table_set_get, .disabled = 1)
 	value_found = shash_table_get(sorted_ht, "b");
 	cr_expect(eq(str, "banana", value_found));
 
+	value_found = shash_table_get(sorted_ht, "x");
+	cr_expect(zero(ptr, value_found));
+
+	value_found = shash_table_get(sorted_ht, "y");
+	cr_expect(zero(ptr, value_found));
+
 	shash_table_delete(sorted_ht);
 }
-
-Test(external, shash_table_get, .disabled = 1)
-{ }
 
 Test(external, shash_table_print, .disabled = 1)
 {
