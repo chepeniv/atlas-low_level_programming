@@ -213,7 +213,7 @@ shash_table_print(const shash_table_t *ht)
 		if (node->snext)
 		{
 			node = node->snext;
-			putchar(' ');
+			printf(", ");
 		}
 		else
 			break;
@@ -234,7 +234,7 @@ shash_table_print_rev(const shash_table_t *ht)
 		if (node->sprev)
 		{
 			node = node->sprev;
-			putchar(' ');
+			printf(", ");
 		}
 		else
 			break;

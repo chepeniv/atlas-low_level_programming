@@ -28,8 +28,7 @@ Test(internal, init_ht_array, .timeout = 8, .disabled = 1)
 	shash_node_t **arr = malloc(sizeof(void *) * size);
 
 	ht->size = size;
-	ht->array = arr;
-	init_ht_array(ht);
+	ht->array = create_ht_array(ht->size);
 	for (ulong i = 0; i < size; i++)
 		cr_expect(zero(ptr, ht->array[i]));
 	free(arr);
@@ -192,35 +191,46 @@ Test(external, shash_table_delete, .disabled = 1)
 	shash_table_delete(new_table);
 }
 
-Test(intranet_example, task_0, .disabled = 1)
+Test(intranet_example, task_0, .disabled = 0)
 {
 	shash_table_t *ht;
 	FILE *expected_out;
+	FILE *actual_out;
 
-	expected_out = fopen("dev_tests/expected.out", "r");
 	ht = shash_table_create(1024);
 
-	cr_redirect_stdout();
-		shash_table_set(ht, "y", "0");
-		shash_table_print(ht);
-		shash_table_set(ht, "j", "1");
-		shash_table_print(ht);
-		shash_table_set(ht, "c", "2");
-		shash_table_print(ht);
-		shash_table_set(ht, "b", "3");
-		shash_table_print(ht);
-		shash_table_set(ht, "z", "4");
-		shash_table_print(ht);
-		shash_table_set(ht, "n", "5");
-		shash_table_print(ht);
-		shash_table_set(ht, "a", "6");
-		shash_table_print(ht);
-		shash_table_set(ht, "m", "7");
-		shash_table_print(ht);
-		shash_table_print_rev(ht);
-		shash_table_delete(ht);
+	freopen("dev_tests/actual.out", "w", stdout);
+
+	shash_table_set(ht, "y", "0");
+	shash_table_set(ht, "y", "0");
+	shash_table_print(ht);
+	shash_table_set(ht, "j", "1");
+	shash_table_set(ht, "j", "1");
+	shash_table_print(ht);
+	shash_table_set(ht, "c", "2");
+	shash_table_print(ht);
+	shash_table_set(ht, "b", "3");
+	shash_table_print(ht);
+	shash_table_set(ht, "z", "4");
+	shash_table_print(ht);
+	shash_table_set(ht, "n", "5");
+	shash_table_print(ht);
+	shash_table_set(ht, "a", "6");
+	shash_table_print(ht);
+	shash_table_set(ht, "m", "7");
+	shash_table_set(ht, "m", "7");
+	shash_table_print(ht);
+	shash_table_print_rev(ht);
+	shash_table_delete(ht);
+
 	fflush(stdout);
-	cr_expect_stdout_eq(expected_out);
+	fclose(stdout);
+
+	actual_out = fopen("dev_tests/actual.out", "r");
+	expected_out = fopen("dev_tests/expected.out", "r");
+
+	cr_expect_file_contents_eq(actual_out, expected_out, "files not equal");
+	fclose(actual_out);
 	fclose(expected_out);
 }
 
