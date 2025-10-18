@@ -43,42 +43,49 @@ create_ht_node(const char *key, const char *value)
 
 /* sort the linked list alphabetically by key */
 void
-insert_sorted(shash_table_t *ht, shash_node_t *node)
+insert_sorted(shash_table_t *ht, shash_node_t *new)
 {
-	shash_node_t *next;
+	shash_node_t *next, *prev;
 
 	if (!ht->shead)
 	{
 		/* first insertion; sorted list must be initialized */
-		ht->shead = node;
-		ht->stail = node;
-		node->snext = NULL;
-		node->sprev = NULL;
+		ht->shead = new;
+		ht->stail = new;
 	}
 	else
 	{
 		/* find the node that follows the one at hand */
+		prev = NULL;
 		next = ht->shead;
-		while (strcmp(node->key, next->key) >= 0)
+		while (strcmp(new->key, next->key) >= 0)
 		{
 			if (next->snext)
 				next = next->snext;
 			else
+			{
+				prev = ht->stail;
+				next = NULL;
 				break;
+			}
 		}
 
-		/* check whether it slots in at the head or at the tail */
-		if (!next->sprev)
-			ht->shead = node;
-		if (!next->snext && strcmp(node->key, next->key) >= 0)
-			ht->stail = node;
+		if (!prev)
+			prev = next->sprev;
+
+		/* check whether it slots in at the head or tail */
+		if (next == ht->shead)
+			ht->shead = new;
+		if (prev == ht->stail)
+			ht->stail = new;
 
 		/* update node links */
-		next->sprev = node;
-		node->snext = next;
-		node->sprev = next->sprev;
-		if (node->sprev)
-			node->sprev->snext = node;
+		new->snext = next;
+		new->sprev = prev;
+		if (next)
+			next->sprev = new;
+		if (prev)
+			prev->snext = new;
 	}
 }
 
@@ -235,29 +242,31 @@ shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *next, *prev;
 
-	/*
-	 * while (ht->shead)
-	 * {
-	 * 	node = ht->shead;
-	 * 	ht->shead = node->snext;
-	 * 	free(node->key);
-	 * 	free(node->value);
-	 * 	free(node);
-	 * 	}
-	 */
-
-	for (ulong i = 0; i < ht->size; i++)
+	next = ht->shead;
+	while (next)
 	{
-		next = ht->array[i];
-		while (next)
-		{
-			prev = next;
-			next = next->next;
-			free(prev->key);
-			free(prev->value);
-			free(prev);
-		}
+		prev = next;
+		next = next->snext;
+		free(prev->key);
+		free(prev->value);
+		free(prev);
 	}
+
+	/*
+	 * (void) node;
+	 * for (ulong i = 0; i < ht->size; i++)
+	 * {
+	 * 	next = ht->array[i];
+	 * 	while (next)
+	 * 	{
+	 * 		prev = next;
+	 * 		next = next->next;
+	 * 		free(prev->key);
+	 * 		free(prev->value);
+	 * 		free(prev);
+	 * 	}
+	 * }
+	 */
 
 	free(ht->array);
 	free(ht);
