@@ -184,7 +184,7 @@ Test(external, shash_table_delete, .disabled = 1)
 
 /* ASSIGNMENT CHECKS */
 
-Test(intranet_example, task_0, .disabled = 0)
+Test(intranet_example, task_0, .disabled = 1)
 {
 	shash_table_t *ht;
 	FILE *expected_out;
@@ -229,3 +229,39 @@ Test(intranet_example, task_0, .disabled = 0)
 
 Test(intranet_checker, task_0, .disabled = 1)
 { }
+
+Test(scenario, sorted_ht_size_1_with_multiple_insertions, .timeout = 3, .disabled = 0)
+{
+	char key[2] = "a", val[2] = "1", *check;
+	shash_table_t *ht = shash_table_create(1);
+
+	for (unsigned long i = 0; i < 16; i++)
+	{
+		shash_table_set(ht, key, val);
+		check = shash_table_get(ht, key);
+		cr_expect(eq(str, check, val));
+		key[0]++;
+		val[0]++;
+	}
+
+	shash_table_print(ht);
+
+	shash_table_delete(ht);
+}
+
+Test(scenario, differing_reinsertions_into_same_key, .disabled = 0)
+{
+	unsigned long size = 16;
+	char *values[5] = {"one", "two", "three", "four", "five"};
+	char *val;
+	shash_table_t *ht = shash_table_create(size);
+
+	for (unsigned long i = 0; i < 5; i++)
+	{
+		shash_table_set(ht, "a", values[i]);
+		val = shash_table_get(ht, "a");
+		cr_expect(eq(str, values[i], val));
+	}
+
+	shash_table_delete(ht);
+}

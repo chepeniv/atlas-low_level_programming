@@ -2,6 +2,7 @@ CC      := gcc
 GDB     := cgdb
 
 FL_ERR   := -Wall -Werror -Wextra -pedantic 
+# --std=c89
 FL_DEBUG := -fsanitize=address -fsanitize=undefined -fsanitize=leak -ggdb3 
 FL_TEST  := $(shell pkg-config --cflags --libs criterion)
 
