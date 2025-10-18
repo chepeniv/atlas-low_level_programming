@@ -20,13 +20,14 @@ dup_string(const char *orig)
 }
 
 shash_node_t **
-create_ht_array(ulong size)
+create_ht_array(unsigned long size)
 {
 	shash_node_t **array;
+	unsigned long i;
 
 	array = malloc(size * sizeof(void *));
 
-	for (ulong i = 0; i < size; i++)
+	for (i = 0; i < size; i++)
 		array[i] = NULL;
 
 	return (array);
@@ -128,7 +129,7 @@ int
 insert_collision(shash_table_t *ht, shash_node_t *node)
 {
 	shash_node_t *head;
-	ulong index;
+	unsigned long index;
 
 	index = key_index((const unsigned char *)node->key, ht->size);
 
@@ -177,7 +178,7 @@ shash_table_set(shash_table_t *ht, const char *key, const char *value)
 char *
 shash_table_get(const shash_table_t *ht, const char *key)
 {
-	ulong offset;
+	unsigned long offset;
 	shash_node_t *index;
 
 	offset = key_index((const unsigned char *)key, ht->size);
